@@ -1,0 +1,48 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "title": "Psychoza",
+      "description": "Sekretarka kradnie pieniądze i zatrzymuje się w motelu...",
+      "director": "Alfred Hitchcock",
+      "year": 1960,
+      "category": "Horror",
+      "price": 19,
+      "stock": 5,
+      "imageUrl": "https://placehold.co/400x600/000000/FFD700?text=PSYCHOZA"
+    },
+    {
+      "id": "2",
+      "title": "Pulp Fiction",
+      "description": "Przeplatające się historie przestępczego świata Los Angeles.",
+      "director": "Quentin Tarantino",
+      "year": 1994,
+      "category": "Crime",
+      "price": 25,
+      "stock": 3,
+      "imageUrl": "https://placehold.co/400x600/000000/FFD700?text=PULP+FICTION"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "TwojLogin",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": "2",
+      "username": "LoginPartnerki",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "username": "prowadzacy",
+      "password": "admin_password",
+      "role": "admin"
+    }
+  ],
+  "opinions": [],
+  "orders": []
+}
