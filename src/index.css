@@ -3,17 +3,28 @@
 
 @layer base {
   body {
-    background-color: #F0EAD6; /* Retro beż / stary papier */
-    color: #000000;
+    background-color: var(--background); /* Retro beż / stary papier */
+    color: var(--white);
     cursor: crosshair; /* Twój celownik */
-    font-family: 'Courier New', Courier, monospace; /* Tymczasowy font retro */
+    font-family: var(--font-main),Helvetica; /* Tymczasowy font retro */
     margin: 0;
     padding: 0;
   }
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /*paleta*/
+  --background:#222222;
+  --white:#f4e2ce;
+  --cream:#dfbc94;
+  --yellow:#e5a657;
+  --orange:#752710;
+  --brown:#1f0c00;
+
+  --font-main: Lato, helvetica;
+  --font-heading: Anton, sans-serif;
+
+  font-family: var(--font-main);
   line-height: 1.5;
   font-weight: 400;
 
@@ -29,7 +40,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--white);
   text-decoration: inherit;
 }
 a:hover {
@@ -38,6 +49,8 @@ a:hover {
 
 
 h1 {
+  font-family: var(--font-heading);
+  color: var(--cream);
   font-size: 3.2em;
   line-height: 1.1;
 }
@@ -63,8 +76,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--brown);
+    background-color: var(--background);
   }
   a:hover {
     color: #747bff;
