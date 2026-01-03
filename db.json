@@ -9,7 +9,7 @@
       "category": "Crime",
       "price": 59.99,
       "stock": 5,
-      "imageUrl": "public/images/12angrymen.jpg"
+      "image": "/images/12angrymen.jpg"
     },
     {
       "id": "25",
@@ -20,7 +20,7 @@
       "category": "Crime",
       "price": 52.00,
       "stock": 3,
-      "imageUrl": "public/images/pulpfiction.jpg"
+      "image": "/images/pulpfiction.jpg"
     },
 
     {
@@ -32,7 +32,7 @@
       "category": "Crime",
       "price": 42.00,
       "stock": 15,
-      "imageUrl": "public/images/mysteriousskin.jpg"
+      "image": "/images/mysteriousskin.jpg"
     },
 
     {
@@ -44,7 +44,7 @@
       "category": "Adventure",
       "price": 33.00,
       "stock": 10,
-      "imageUrl": "public/images/fantasticmrfox.jpg"
+      "image": "/images/fantasticmrfox.jpg"
     },
 
     {
@@ -56,7 +56,7 @@
       "category": "Thriller",
       "price": 69.99,
       "stock": 11,
-      "imageUrl": "public/images/fightclub.jpg"
+      "image": "/images/fightclub.jpg"
     },
 
     {
@@ -68,7 +68,7 @@
       "category": "Mystery",
       "price": 29.99,
       "stock": 111,
-      "imageUrl": "public/images/isawthetvglow.jpg"
+      "image": "/images/isawthetvglow.jpg"
     },
 
     {
@@ -80,7 +80,7 @@
       "category": "Adventure",
       "price": 59.99,
       "stock": 8,
-      "imageUrl": "public/images/standbyme.jpg"
+      "image": "/images/standbyme.jpg"
     },
     {
       "id": "19",
@@ -91,7 +91,7 @@
       "category": "Sci-Fi",
       "price": 33.99,
       "stock": 3,
-      "imageUrl": "public/images/matrix.jpg"
+      "image": "/images/matrix.jpg"
     },
     {
       "id": "18",
@@ -102,7 +102,7 @@
       "category": "Horror",
       "price": 99.99,
       "stock": 9,
-      "imageUrl": "public/images/theshining.jpg"
+      "image": "/images/theshining.jpg"
     },
     {
       "id": "17",
@@ -113,7 +113,7 @@
       "category": "Mystery",
       "price": 45.99,
       "stock": 87,
-      "imageUrl": "public/images/twinpeaks.jpg"
+      "image": "/images/twinpeaks.jpg"
     },
     {
       "id": "16",
@@ -124,7 +124,7 @@
       "category": "Fantasy",
       "price": 999.99,
       "stock": 50,
-      "imageUrl": "public/images/sanatorium.jpg"
+      "image": "public/images/sanatorium.jpg"
     },
     {
       "id": "15",
@@ -135,7 +135,7 @@
       "category":"Horror",
       "price": 88.99,
       "stock": 5,
-      "imageUrl": "public/images/silenceofthelambs.jpg"
+      "image": "/images/silenceofthelambs.jpg"
     },
     {
       "id": "14",
@@ -146,7 +146,7 @@
       "category":"Comedy",
       "price": 70.99,
       "stock": 53,
-      "imageUrl": "public/images/dazed&confused.jpg"
+      "image": "/images/dazed&confused.jpg"
     },
     {
       "id": "13",
@@ -157,7 +157,7 @@
       "category":"Crime",
       "price": 13.99,
       "stock": 3,
-      "imageUrl": "public/images/taxidriver.jpg"
+      "image": "/images/taxidriver.jpg"
     },
     {
       "id": "12",
@@ -168,11 +168,9 @@
       "category":"Action",
       "price": 21.99,
       "stock": 35,
-      "imageUrl": "public/images/karatekid10.jpg"
+      "image": "/images/karatekid10.jpg"
     },
     {
-      "movies": [
-        {
           "id": "1",
           "title": "Top Gun",
           "description": "The Top Gun Naval Fighter Weapons School is where the best of the best train to refine their elite flying skills. When hotshot fighter pilot Maverick is sent to the school, his reckless attitude and cocky demeanor put him at odds with the other pilots, especially the cool and collected Iceman.",
@@ -181,7 +179,7 @@
           "category": "Action",
           "price": 46,
           "stock": 5,
-          "image": "public/images/topgun.jpg"
+          "image": "/images/topgun.jpg"
         },
         {
           "id": "2",
@@ -192,7 +190,7 @@
           "category": "Neo-Noir",
           "price": 30,
           "stock": 3,
-          "image": "public/images/brick.jpg"
+          "image": "/images/brick.jpg"
         },
 
         {
@@ -215,7 +213,7 @@
           "category": "Dark Comedy",
           "price": 28,
           "stock": 4,
-          "image": "public/images/wesele.jpg",
+          "image": "/images/wesele.jpg",
           "description": "A brutal and honest diagnosis of Polish society in one night."
         },
         {
@@ -226,7 +224,7 @@
           "category": "Drama",
           "price": 20,
           "stock": 6,
-          "image": "public/images/wallflower.jpg",
+          "image": "/images/wallflower.jpg",
           "description": "A pair of charismatic seniors take socially awkward Charlie under their wing."
         },
         {
@@ -237,7 +235,7 @@
           "category": "Drama",
           "price": 35,
           "stock": 2,
-          "image": "public/images/aftersun.jpg",
+          "image": "/images/aftersun.jpg",
           "description": "Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier. Memories real and imagined fill the gaps between as she tries to reconcile the father she knew with the man she didn't."
         },
         {
@@ -248,7 +246,7 @@
           "category": "Fantasy",
           "price": 24,
           "stock": 15,
-          "image": "public/images/harrypotter.jpg",
+          "image": "/images/harrypotter.jpg",
           "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
         },
         {
@@ -259,7 +257,7 @@
           "category": "Sci-Fi",
           "price": 29,
           "stock": 7,
-          "image": "public/images/starwars.jpg",
+          "image": "/images/starwars.jpg",
           "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader."
         },
         {
@@ -270,7 +268,7 @@
           "category": "Sci-Fi",
           "price": 35,
           "stock": 10,
-          "image": "public/images/bttf.jpg",
+          "image": "/images/bttf.jpg",
           "description": "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown."
         },
         {
@@ -281,7 +279,7 @@
           "category": "Action",
           "price": 580.00,
           "stock": 5,
-          "image": "public/images/karate84.jpg",
+          "image": "/images/karate84.jpg",
           "description": "Recently relocated from NJ to LA, Daniel becomes the target of a gang of Cobra Kai dojo students. When Mr. Miyagi saves him with expert Karate skills, Daniel convinces him to teach him to defend himself, and put his bullies in their place."
         },
         {
@@ -292,12 +290,9 @@
           "category": "Action",
           "price": 32,
           "stock": 8,
-          "image": "public/images/killbill.jpg",
+          "image": "/images/killbill.jpg",
           "description": "After waking from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her."
         }
-
-      ]
-    }
   ],
   "users": [
     {
