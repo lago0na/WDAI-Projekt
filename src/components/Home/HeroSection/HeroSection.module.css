@@ -1,0 +1,21 @@
+.heading{
+    margin: 0;
+    font-size: clamp(6rem, 35vw, 18rem);
+    line-height: 0.9;
+    display: inline-block;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.heroContainer {
+    width: 100%;
+    min-height: 100vh;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../../../assets/VHS_CLUB-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

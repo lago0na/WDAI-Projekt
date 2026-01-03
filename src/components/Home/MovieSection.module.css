@@ -1,0 +1,45 @@
+.sectionTitle{
+    margin-bottom: 40px;
+    font-size: 3rem;
+    color: var(--yellow) !important;
+}
+.sectionContainer {
+    background-color: #121212;
+    padding: 4rem 2rem;
+    min-height: 80vh;
+    text-align: center;
+}
+
+.gridContainer {
+    display: grid;
+    /* Grid układa elementy w kolejności z tablicy (czyli kolorami) */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 60px; /* Duży odstęp, żebyś mogła bezpiecznie przesuwać plakaty */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movieCard {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+
+    /* Ważne: transition musi obejmować transform */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.movieCard:hover {
+    /* Resetujemy przesunięcia po najechaniu, żeby klient widział plakat prosto */
+    transform: scale(1.15) rotate(0deg) translate(0, 0) !important;
+    z-index: 10;
+    box-shadow: 0 15px 30px rgba(0,0,0, 0.8);
+}
+
+.posterImage {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 5px 5px 15px rgba(0,0,0, 0.5);
+}

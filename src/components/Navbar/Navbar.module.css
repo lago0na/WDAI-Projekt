@@ -1,0 +1,107 @@
+:root {
+    --logo-brown: #7a2a1d;
+    --glitch-cyan: #00f2ff;
+    --glitch-purple: #ff00ff;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(223, 188, 148, 0.1);
+
+    /*wysuwanie paska*/
+    transform: translateY(-102%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+    transform: translateY(0);
+}
+
+.hidden {
+    pointer-events: none;
+}
+
+
+.heading {
+    font-family: 'Anton', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--logo-brown) !important;
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    z-index: 1;
+    transform: translateZ(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.heading::before,
+.heading::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    font-family: 'Anton', sans-serif;
+    pointer-events: none;
+}
+
+.heading::before {
+    color: var(--glitch-cyan);
+    animation: delicate-glitch-1 2s infinite linear alternate-reverse;
+}
+
+.heading::after {
+    color: var(--glitch-purple);
+    animation: delicate-glitch-2 3s infinite linear alternate-reverse;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navLinks a {
+    color: var(--cream);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.navLinks a:hover {
+    opacity: 1;
+    color: var(--yellow);
+}
+
+@keyframes delicate-glitch-1 {
+    0%, 100% { transform: translate(0); }
+    33% { transform: translate(-1px, 0.5px); }
+    66% { transform: translate(1px, -0.5px); }
+}
+
+@keyframes delicate-glitch-2 {
+    0%, 100% { transform: translate(0); }
+    50% { transform: translate(1px, 0.5px); }
+}
