@@ -17,7 +17,7 @@ function App() {
         <div className="noise-overlay"></div>
         <header className="mb-12 border-b-8 border-black pb-4 flex justify-between items-end">
           <div>
-            <h1 className="text-7xl font-black uppercase leading-none tracking-tighter">
+            <h1 className="text-7xl font-black italic uppercase leading-none tracking-tighter">
               VHS_CLUB
             </h1>
             <p className="text-xl font-bold tracking-[0.3em] mt-2">RETRO // NOIR // CURATION</p>

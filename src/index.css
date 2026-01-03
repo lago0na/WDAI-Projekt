@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    background-color: var(--background); /* Retro beż / stary papier */
+    background-color: var(--background); 
     color: var(--white);
     cursor: crosshair; /* Twój celownik */
     font-family: var(--font-main),Helvetica; /* Tymczasowy font retro */
@@ -54,7 +54,6 @@ h1 {
   color: var(--cream);
   font-size: 5rem;
   line-height: 1.1;
-  /* SZTUCZKA: Dodaje 2px grubości do liter */
   -webkit-text-stroke: 2px var(--cream); 
   paint-order: stroke fill;
 }
