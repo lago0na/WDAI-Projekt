@@ -1,7 +1,7 @@
 :root {
     --logo-brown: #7a2a1d;
-    --glitch-cyan: #00f2ff;
-    --glitch-purple: #ff00ff;
+    --glitch-cyan: #988166;
+    --glitch-purple: #1f0c00;
 }
 
 .navbarContainer {
@@ -63,12 +63,12 @@
 
 .heading::before {
     color: var(--glitch-cyan);
-    animation: delicate-glitch-1 2s infinite linear alternate-reverse;
+    animation: delicate-glitch-1 0.6s infinite linear alternate-reverse;
 }
 
 .heading::after {
     color: var(--glitch-purple);
-    animation: delicate-glitch-2 3s infinite linear alternate-reverse;
+    animation: delicate-glitch-2 0.45s infinite linear alternate-reverse;
 }
 
 .navLinks {
@@ -102,6 +102,11 @@
 }
 
 @keyframes delicate-glitch-2 {
-    0%, 100% { transform: translate(0); }
-    50% { transform: translate(1px, 0.5px); }
+    0%   { transform: translate(0); }
+    15%  { transform: translate(2px, 1px) skew(-1deg); }
+    30%  { transform: translate(-2px, -1px) skew(1deg); }
+    45%  { transform: translate(1.5px, 0) skew(-2deg); }
+    60%  { transform: translate(-1.5px, 1px) skew(2deg); }
+    75%  { transform: translate(1px, -1px) skew(-1deg); }
+    100% { transform: translate(0); }
 }
