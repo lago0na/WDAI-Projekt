@@ -8,7 +8,8 @@ export default function MovieSection() {
 
     // 3. Pobieramy dane po załadowaniu komponentu
     useEffect(() => {
-        fetch('http://localhost:3000/movies')
+        //port sie zmienia w zaleznosci od kompa
+        fetch('http://localhost:5001/movies')
             .then((res) => res.json())
             .then((data) => {
                 // Dane przyjdą w takiej kolejności, w jakiej są w db.json
@@ -23,20 +24,20 @@ export default function MovieSection() {
 
             <div className={styles.gridContainer}>
                 {/* 4. Mapujemy pobrane filmy. Jeśli baza jest pusta, nic się nie wyświetli */}
-                {movies.map((movie) => (
+                {movies.map((movies) => (
                     <Link
                         to={`/images/${movies.id}`}
-                        key={movie.id}
+                        key={movies.id}
                         className={styles.movieCard}
                         // Styl bierzemy bezpośrednio z obiektu movie z bazy
                         // Dodajemy zabezpieczenie "|| {}", gdyby w bazie brakowało stylu
                         style={{
-                            transform: `translate(${movie.style?.x || 0}px, ${movie.style?.y || 0}px) rotate(${movie.style?.rotate || 0}deg)`
+                            transform: `translate(${movies.style?.x || 0}px, ${movies.style?.y || 0}px) rotate(${movies.style?.rotate || 0}deg)`
                         }}
                     >
                         <img
-                            src={movie.image}
-                            alt={movie.title}
+                            src={movies.image}
+                            alt={movies.title}
                             className={styles.posterImage}
                         />
                     </Link>
