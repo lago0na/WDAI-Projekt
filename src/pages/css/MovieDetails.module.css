@@ -1,0 +1,117 @@
+/* src/pages/MovieDetails.module.css */
+
+.container {
+    background-color: #121212; /* Ciemne tło */
+    min-height: 100vh;
+    color: #E6DACE; /* Beżowy tekst */
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Kontener dzielący na lewo (tekst) i prawo (obraz) */
+.contentWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    gap: 4rem; /* Odstęp między tekstem a plakatem */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    flex: 1; /* Rozciąga się na dostępną wysokość */
+}
+
+/* --- LEWA KOLUMNA (INFO) --- */
+.infoSection {
+    flex: 1; /* Zajmuje dostępną przestrzeń */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.title {
+    font-family: var(--font-heading, 'Impact', sans-serif);
+    font-size: 4rem;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E6DACE;
+    letter-spacing: 1px;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc; /* Lekko przygaszona biel dla czytelności */
+    max-width: 600px; /* Żeby wiersze nie były za długie */
+}
+
+.metaInfo {
+    font-size: 1rem;
+    color: #fff;
+    border-left: 3px solid #E6DACE; /* Ozdobna kreseczka po lewej */
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    margin-top: 1rem;
+}
+
+/* --- PRZYCISK ADD TO CART --- */
+.addToCartBtn {
+    background-color: transparent;
+    border: 2px solid #E6DACE;
+    color: #E6DACE;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px; /* "Tabletka" jak na zdjęciu */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    width: 100%; /* Rozciąga się na szerokość */
+    max-width: 400px; /* Ale nie szerzej niż 400px */
+    margin-top: 1rem;
+    letter-spacing: 2px;
+}
+
+.addToCartBtn:hover {
+    background-color: #E6DACE;
+    color: #121212; /* Odwrócenie kolorów po najechaniu */
+}
+
+/* --- PRAWA KOLUMNA (OBRAZ) --- */
+.imageSection {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie obrazka */
+}
+
+.poster {
+    width: 100%;
+    max-width: 500px; /* Maksymalna szerokość plakatu */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0, 0.7); /* Ładny cień */
+}
+
+/* Responsywność na telefony */
+@media (max-width: 900px) {
+    .contentWrapper {
+        flex-direction: column-reverse; /* Na telefonie obrazek nad tekstem */
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .addToCartBtn {
+        max-width: 100%;
+    }
+}

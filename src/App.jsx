@@ -6,6 +6,10 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import MovieDetails from './pages/MovieDetails';
+import Reviews from "./pages/Reviews.jsx";
+import Login from "./pages/Login.jsx";
+import Profile from "./pages/Profile.jsx";
+import Register from "./pages/Register.jsx";
 
 function App() {
   return (

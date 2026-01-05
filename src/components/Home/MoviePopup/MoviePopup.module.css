@@ -1,0 +1,236 @@
+/* src/components/MoviePopup.module.css */
+
+/* Tło zaciemniające cały ekran */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Okno z treścią */
+.popupContent {
+    --popup-border-color: var(--yellow);
+    background-color:var(--background);
+    border: 1px solid var(--popup-border-color);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 50px rgba(230, 218, 206, 0.1);
+    overflow: hidden
+}
+
+.headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--popup-border-color);
+    height: 60px;
+    background-color:var(--background);
+}
+
+.headerLogo {
+    font-family: var(--font-heading, sans-serif);
+    color: var(--logo-brown) !important;
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+    z-index: 1;
+    transform: translateZ(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.headerLogo::before,
+.headerLogo::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    font-family: 'Anton', sans-serif;
+    pointer-events: none;
+}
+
+.headerLogo::before {
+    color: var(--glitch-cyan);
+    animation: delicate-glitch-1 0.6s infinite linear alternate-reverse;
+}
+
+.headerLogo::after {
+    color: var(--glitch-purple);
+    animation: delicate-glitch-2 0.45s infinite linear alternate-reverse;
+}
+@keyframes delicate-glitch-1 {
+    0%, 100% { transform: translate(0); }
+    33% { transform: translate(-1px, 0.5px); }
+    66% { transform: translate(1px, -0.5px); }
+}
+
+@keyframes delicate-glitch-2 {
+    0%   { transform: translate(0); }
+    15%  { transform: translate(2px, 1px) skew(-1deg); }
+    30%  { transform: translate(-2px, -1px) skew(1deg); }
+    45%  { transform: translate(1.5px, 0) skew(-2deg); }
+    60%  { transform: translate(-1.5px, 1px) skew(2deg); }
+    75%  { transform: translate(1px, -1px) skew(-1deg); }
+    100% { transform: translate(0); }
+}
+/* Przycisk zamknięcia (X) */
+.closeButton {
+    height: 100%; /* Rozciągamy guzik na całą wysokość paska */
+    width: 60px;  /* Kwadratowy przycisk */
+    background: transparent;
+    border: none;
+    border-left: 2px solid var(--popup-border-color);
+    color: var(--cream);
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 0;
+    line-height: 1;
+}
+
+.closeButton:hover {
+    background-color: var(--cream);
+    color: #121212;
+}
+
+.contentBody {
+    display: flex;          /* Flexbox włącza się naturalnie */
+    flex-direction: row;    /* Układ poziomy */
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3rem;
+    gap: 3rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.infoSection {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
+    min-width: 0;
+    padding-right: 2rem;
+}
+
+.title {
+    margin: 0 0 1rem;
+    line-height: 1.1;
+    font-size: 3.5rem;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-align: left;
+}
+
+
+.longTitle {
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.popupContent .title {
+    color: var(--yellow);
+}
+
+.description {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.meta {
+    font-size: 0.9rem;
+    border-left: 2px solid var(--orange);
+    padding-left: 1rem;
+    opacity: 0.8;
+}
+
+/* Obrazek po prawej */
+.imageSection {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.poster {
+    width: 100%;       /* Obrazek wypełnia swoją sekcję */
+    max-width: 350px;  /* Ale nie więcej niż 350px */
+    height: auto;      /* Proporcje zachowane */
+    object-fit: contain;
+    box-shadow: 10px 10px 30px rgba(0,0,0, 0.5);
+}
+
+/* Animacja pojawiania się */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 900px) {
+    .contentBody {
+        flex-direction: column-reverse;
+        padding: 1.5rem;
+        gap: 2rem;
+        overflow-y: auto;
+    }
+
+    .infoSection, .imageSection {
+        flex: none;
+        width: 100%;
+    }
+
+    .imageSection {
+        justify-content: center;
+        margin-bottom: 1rem; /* Dodatkowy odstęp pod obrazkiem */
+    }
+
+    /* --- NOWOŚĆ: NAPRAWA TYTUŁU --- */
+    .title {
+        /* Używamy !important, aby nadpisać styl liniowy (style={{...}}) z JSX.
+           Na małych ekranach tytuł będzie miał max 2.5rem, niezależnie od długości.
+        */
+        font-size: 2.5rem !important;
+        line-height: 1.2; /* Trochę luźniejsza linia dla czytelności */
+
+        /* Zabezpieczenie: jeśli trafi się bardzo długie słowo bez spacji, złam je */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
+
+/* Opcjonalnie: Na bardzo małych telefonach jeszcze mniejszy */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem !important;
+    }
+}
