@@ -1,5 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import { useAuth } from './context/AuthContext/AuthContext';
+import AdminPanel from './pages/AdminPanel';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,6 +15,7 @@ import Profile from "./pages/Profile.jsx";
 import Register from "./pages/Register.jsx";
 
 function App() {
+  const { user } = useAuth();
   return (
       <div className="app-container">
         <Navbar />
@@ -22,9 +26,26 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/shop" element={
+                <ProtectedRoute>
+                    <Shop />
+                </ProtectedRoute>
+            } />
 
+            <Route path="/profile" element={
+                <ProtectedRoute>
+                    <Profile />
+                </ProtectedRoute>
+            } />
+            <Route path="/admin" element={
+                <ProtectedRoute>
+                    {user?.role === 'admin' ? <AdminPanel /> : <Navigate to="/" />}
+                </ProtectedRoute>
+            } />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           {/* === OBSŁUGA BŁĘDÓW / PRZEKIEROWANIE === */}
           {/* Gwiazdka "*" oznacza "wszystko inne". */}
           {/* Jeśli ktoś wpisze zły adres, zostanie przeniesiony do Home */}

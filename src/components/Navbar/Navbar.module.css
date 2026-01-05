@@ -1,14 +1,14 @@
 :root {
-    --logo-brown: #7a2a1d;
+    --logo-brown: #40180f;
     --glitch-cyan: #988166;
-    --glitch-purple: #1f0c00;
+    --glitch-purple: #230700;
 }
 
 .navbarContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
     position: fixed;
     top: 0;
     left: 0;
