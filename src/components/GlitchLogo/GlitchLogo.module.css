@@ -1,0 +1,56 @@
+/* src/components/GlitchLogo/GlitchLogo.module.css */
+
+.logo {
+    font-family: var(--font-heading, sans-serif);
+    color: var(--logo-brown) !important;
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+    z-index: 1;
+    transform: translateZ(0);
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none; /* Ważne, jeśli użyjesz go wewnątrz Link */
+}
+
+.logo::before,
+.logo::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    font-family: 'Anton', sans-serif;
+    pointer-events: none;
+}
+
+.logo::before {
+    color: var(--glitch-cyan);
+    animation: delicate-glitch-1 0.6s infinite linear alternate-reverse;
+}
+
+.logo::after {
+    color: var(--glitch-purple);
+    animation: delicate-glitch-2 0.45s infinite linear alternate-reverse;
+}
+
+@keyframes delicate-glitch-1 {
+    0%, 100% { transform: translate(0); }
+    33% { transform: translate(-1px, 0.5px); }
+    66% { transform: translate(1px, -0.5px); }
+}
+
+@keyframes delicate-glitch-2 {
+    0%   { transform: translate(0); }
+    15%  { transform: translate(2px, 1px) skew(-1deg); }
+    30%  { transform: translate(-2px, -1px) skew(1deg); }
+    45%  { transform: translate(1.5px, 0) skew(-2deg); }
+    60%  { transform: translate(-1.5px, 1px) skew(2deg); }
+    75%  { transform: translate(1px, -1px) skew(-1deg); }
+    100% { transform: translate(0); }
+}

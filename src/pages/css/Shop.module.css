@@ -10,8 +10,9 @@
 /* --- NAGŁÓWEK "SHOP MOVIES" --- */
 .pageTitle {
     font-family: var(--font-heading, 'Impact', sans-serif);
-    font-size: 4rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 /* --- PASEK FILTRÓW I SORTOWANIA --- */

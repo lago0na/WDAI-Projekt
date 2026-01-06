@@ -1,0 +1,179 @@
+/* src/pages/css/Cart.module.css */
+
+.cartWrapper {
+    min-height: 100vh;
+    background-color: #121212;
+    color: #f4e2ce;
+    padding-bottom: 50px;
+}
+
+.cartContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pageTitle {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e5a657;
+    padding-bottom: 10px;
+}
+
+/* Pusty koszyk */
+.emptyCart {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.emptyMessage {
+    opacity: 0.5;
+}
+
+.returnLink {
+    color: #e5a657;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.returnLink:hover {
+    transform: translateX(-5px);
+}
+
+/* Wiersz z produktem */
+.itemRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    transition: box-shadow 0.3s;
+}
+
+.itemRow:hover {
+    box-shadow: 0 0 10px rgba(229, 166, 87, 0.2);
+}
+
+.itemImage {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #444;
+}
+
+.itemInfo {
+    flex: 1;
+}
+
+.itemTitle {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.itemPriceSmall {
+    margin: 0;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+/* Kontrolki ilości (+/-) */
+.quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.qtyBtn {
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    border: none;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.qtyBtn:hover {
+    background: #e5a657;
+    color: #000;
+}
+
+.qtyNumber {
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+
+/* Cena całkowita pozycji */
+.itemTotalPrice {
+    font-weight: bold;
+    margin-right: 20px;
+    color: #e5a657;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Przycisk usuwania (X) */
+.removeBtn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.removeBtn:hover {
+    opacity: 1;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+/* Sekcja podsumowania */
+.summarySection {
+    margin-top: 40px;
+    border-top: 2px solid #e5a657;
+    padding-top: 20px;
+    text-align: right;
+}
+
+.totalPrice {
+    font-size: 2rem;
+    color: #e5a657;
+}
+
+.checkoutBtn {
+    background-color: #e5a657;
+    color: #1f0c00;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: transform 0.1s, filter 0.2s;
+}
+
+.checkoutBtn:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.checkoutBtn:active {
+    transform: scale(0.98);
+}

@@ -1,5 +1,6 @@
 // src/components/MoviePopup.jsx
 import styles from './MoviePopup.module.css';
+import GlitchLogo from "../../GlitchLogo/GlitchLogo.jsx";
 
 export default function MoviePopup({ movie, onClose }) {
     if (!movie) return null;
@@ -12,8 +13,8 @@ export default function MoviePopup({ movie, onClose }) {
             <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
 
                 <div className={styles.headerBar}>
-                    <div className={`${styles.headerLogo} main-heading`} data-text="VHS_CLUB">
-                        VHS_CLUB
+                    <div className={styles.headerLogo}>
+                        <GlitchLogo/>
                     </div>
                     <button className={styles.closeButton} onClick={onClose}>&times;</button>
                 </div>

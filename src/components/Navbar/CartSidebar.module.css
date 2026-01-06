@@ -1,0 +1,161 @@
+/* src/components/Navbar/CartSidebar.module.css */
+
+/* Tło przyciemniające resztę strony */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.7); /* Półprzezroczyste czarne */
+    z-index: 9998; /* Bardzo wysoko, ale pod sidebarem */
+    backdrop-filter: blur(2px); /* Rozmycie tła */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Właściwy panel koszyka (szuflada) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px; /* Szerokość szuflady */
+    max-width: 85%; /* Na telefonach nie zajmie całego ekranu */
+    height: 100vh;
+    background-color: var(--background); /* Kolor tła Twojej apki */
+    color: var(--white);
+    z-index: 9999; /* Najwyżej */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    //border-left: 2px solid #e5a657;
+
+    transform: translateX(100%); /* Domyślnie schowany poza ekran (w prawo) */
+    transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1); /* Płynna animacja */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Wsuwamy na ekran */
+}
+
+/* HEADER */
+.header {
+    padding: 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: #f4e2ce;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    color: #e5a657;
+}
+
+/* BODY (Lista produktów) */
+.cartItems {
+    flex: 1; /* Zajmuje dostępną przestrzeń */
+    overflow-y: auto; /* Scrollowanie jeśli dużo produktów */
+    padding: 20px;
+}
+
+.itemRow {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.itemImage {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #444;
+}
+
+.itemDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itemTitle {
+    margin: 0;
+    font-size: 1rem;
+    color:var(--background);
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.qtyBtn {
+    background: #333;
+    color: var(--background);
+    border: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.removeBtn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* FOOTER (Podsumowanie) */
+.footer {
+    padding: 20px;
+    border-top: 2px solid #e5a657;
+    background-color: #1a1a1a;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #e5a657;
+}
+
+.checkoutBtn {
+    width: 100%;
+    background-color: #e5a657;
+    color: #1f0c00;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.checkoutBtn:hover {
+    filter: brightness(1.1);
+}

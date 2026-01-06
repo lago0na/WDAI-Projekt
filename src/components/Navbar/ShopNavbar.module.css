@@ -2,29 +2,21 @@
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 1.5rem 4rem; /* Taki sam padding boczny jak w Shop */
-    background-color: #121212; /* Ciemne tło */
-    color: #E6DACE; /* Beżowy kolor tekstu */
+    padding-bottom: 1.5rem;
+    background-color:var(--background);
+    color: var(--cream);
     font-family: var(--font-heading, 'Impact', sans-serif);
+    position: sticky; /* Przykleja element */
+    top: 0;           /* Do samej góry */
+    z-index: 1000;
 }
 
 /* --- LOGO --- */
 .logo {
-    font-size: 2rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    /* Domyślny kolor dla "_CLUB" - zrobimy go jako obrys */
-    color: transparent;
-    -webkit-text-stroke: 1px #a52a2a; /* Brązowo-czerwony obrys */
-}
-
-.logoRed {
-    color: #c0392b; /* Czerwony kolor dla "VHS" */
-    -webkit-text-stroke: 0; /* Brak obrysu dla pełnego koloru */
-    margin-right: 2px;
+   font-size: 2rem;
+    margin-right: 40px;
 }
 
 /* --- ŚRODKOWE MENU (LINKS) --- */
@@ -38,7 +30,6 @@
 
 .navLink {
     text-decoration: none;
-    color: #E6DACE;
     font-size: 1.5rem; /* Duża, czytelna czcionka jak na screenie */
     text-transform: uppercase;
     transition: color 0.2s;
@@ -53,6 +44,7 @@
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-left: auto;
 }
 
 .icon {

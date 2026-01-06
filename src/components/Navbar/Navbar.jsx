@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext/AuthContext.jsx'; // 1. DODANO IMPORT
 import styles from './Navbar.module.css';
+import GlitchLogo from "../GlitchLogo/GlitchLogo.jsx";
 
 const Navbar = () => {
     const { token, logout, user } = useAuth(); // 2. KORZYSTASZ Z OCHRONIARZA
@@ -19,8 +20,8 @@ const Navbar = () => {
 
     return (
         <nav className={`${styles.navbarContainer} ${isVisible ? styles.visible : styles.hidden}`}>
-            <NavLink to="/" className={`${styles.heading} main-heading`} data-text="VHS_CLUB">
-                VHS_CLUB
+            <NavLink to="/">
+                <GlitchLogo className={styles.bigLogo}/>
             </NavLink>
 
             <ul className={styles.navLinks}>
