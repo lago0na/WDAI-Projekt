@@ -1,137 +1,129 @@
-.aboutWrapper {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background);
-    /* 1. KLUCZOWE: Odstęp od góry, żeby Navbar nie zasłaniał tytułu */
-    padding: 120px 20px 60px;
+.pageWrapper {
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden; /* Scrollujemy wewnątrz scrollContainer */
 }
 
-.internalNav {
+/* --- SCROLLING WALL --- */
+.scrollContainer {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    /* Dajemy padding od góry, żeby Navbar nie zasłaniał pierwszych telewizorów */
+    padding-top: 80px;
+}
+
+.wallSection {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    background-image: url('../../assets/VHS_CLUB-bg.png');
+    background-size: 100% 100%; /* Rozciąga zdjęcie na cały widok */
+    background-repeat: no-repeat;
+}
+
+.tvGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.tvCell {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap; /* Żeby na telefonach przyciski przeszły do nowej linii */
-    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- TV SCREEN CONTENT --- */
+.screenContent {
+    position: absolute;
+    top: 13%;
+    left: 12%;
+    width: 63%;
+    height: 54%;
+    background-color: rgba(20, 10, 0, 0.7);
+    color: var(--yellow);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% / 10%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,1);
+    animation: screenFlicker 0.1s infinite;
+}
+
+.reviewInner {
+    text-align: center;
+    font-family: 'Inter', monospace;
+    text-transform: uppercase;
+}
+
+.movieTitle a {
+    color: var(--glitch-cyan);
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    display: block;
+}
+
+.stars { color: var(--yellow); font-size: 0.9rem; margin-bottom: 5px; }
+.comment { font-size: 0.75rem; font-style: italic; opacity: 0.9; line-height: 1.1; }
+.author { color: var(--glitch-cyan); font-size: 0.65rem; margin-top: 5px; }
+
+/* --- EFEKTY CRT --- */
+.scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(transparent 0px, transparent 2px, rgba(0, 0, 0, 0.2) 3px);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.staticNoise {
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.2;
+}
+
+/* --- STOPKA --- */
+.footerNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    border-top: 3px solid var(--logo-brown);
+    padding: 15px 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
 .navBtn {
-    color: var(--logo-brown) !important;
+    color: var(--cream);
+    background: var(--logo-brown);
+    padding: 8px 15px;
+    border: 2px solid #000;
     font-family: 'Anton', sans-serif;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    border: 2px solid transparent;
-    transition: 0.2s steps(2);
+    cursor: pointer;
 }
 
-.navBtn:hover {
-    border-color: #000;
-    background-color: var(--yellow);
-    transform: rotate(-1deg);
-}
+.info { color: var(--logo-brown); font-family: monospace; font-size: 0.8rem; }
 
-.aboutCard {
-    background-color: var(--cream);
-    border: 5px solid #000;
-    padding: 3rem;
-    width: 100%;
-    max-width: 700px;
-    box-shadow: 20px 20px 0 #000;
-    position: relative;
-    /* Szum CRT dla klimatu */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-}
-
-.glitchTitle {
-    color: var(--logo-brown);
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    text-align: left;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    line-height: 1;
-}
-
-.content {
-    color: #000;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-}
-
-.manifesto {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
-
-.description {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    border-left: 4px solid var(--logo-brown);
-    padding-left: 1.5rem;
-}
-
-.highlight {
-    background-color: var(--yellow);
-    padding: 0 5px;
-    font-weight: bold;
-}
-
-.bold {
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.ctaSection {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 3px dashed #000;
-}
-
-.suggestion {
-    font-family: 'Anton', sans-serif;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-}
-
-.shopBtn {
-    display: inline-block;
-    background-color: var(--logo-brown);
-    color: var(--cream) !important;
-    border: 3px solid #000;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-family: 'Anton', sans-serif;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    box-shadow: 8px 8px 0 #000;
-    transition: all 0.1s steps(2);
-}
-
-.shopBtn:hover {
-    background-color: #000;
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0 #000;
-}
-
-.footerInfo {
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    color: var(--logo-brown);
-    opacity: 0.7;
-    font-family: monospace;
-}
-
-/* Responsywność */
-@media (max-width: 480px) {
-    .aboutCard {
-        padding: 1.5rem;
-    }
-    .glitchTitle {
-        font-size: 2rem;
-    }
-    .manifesto {
-        font-size: 1.1rem;
-    }
+@keyframes screenFlicker {
+    0% { opacity: 0.98; }
+    50% { opacity: 1; }
+    100% { opacity: 0.99; }
 }

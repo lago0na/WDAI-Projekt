@@ -29,7 +29,6 @@ const About = () => {
                     <div className={styles.ctaSection}>
                         <p className={styles.suggestion}>SELECT YOUR NEXT MOVE:</p>
 
-                        {/* Nawigacja wewnątrz strony */}
                         <div className={styles.internalNav}>
                             <Link to="/shop" className={styles.navBtn}>[VIEW_SHOP]</Link>
                             <Link to="/contact" className={styles.navBtn}>[CONTACT_US]</Link>

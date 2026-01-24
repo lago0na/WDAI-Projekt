@@ -450,6 +450,13 @@
       "username": "kasia123",
       "role": "user",
       "id": "i_1XLBz"
+    },
+    {
+      "email": "kasia.piskorz2005@gmail.com",
+      "password": "$2a$10$lYBr4xShKz0YQqOjJP63SeGWaz4YBqc54v5hAFzal2MmmciWoQj.a",
+      "username": "kasia",
+      "role": "user",
+      "id": "BigqOwQ"
     }
   ],
   "opinions": [],
