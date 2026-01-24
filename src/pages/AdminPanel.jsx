@@ -1,61 +1,225 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/Admin.module.css';
+import ShopNavbar from '../components/Navbar/ShopNavbar';
+import { useAuth } from '../context/AuthContext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
-    const [movies, setMovies] = useState([]);
-    const [showAddForm, setShowAddForm] = useState(false);
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
+    const [movies, setMovies] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Stan dla edytowanego/nowego filmu
+    const [currentMovie, setCurrentMovie] = useState({
+        title: '',
+        director: '',
+        year: '',
+        category: '',
+        price: '',
+        stock: '',
+        image: '/images/placeholder.jpg',
+        description: ''
+    });
+
+    // 1. ZABEZPIECZENIE - Przekieruj jeśli nie admin
     useEffect(() => {
+        if (!user || user.role !== 'admin') {
+            navigate('/');
+        }
+    }, [user, navigate]);
+
+    // 2. POBIERANIE FILMÓW
+    const fetchMovies = () => {
         fetch('http://localhost:3000/movies')
             .then(res => res.json())
-            .then(data => setMovies(data));
+            .then(data => setMovies(data))
+            .catch(err => console.error(err));
+    };
+
+    useEffect(() => {
+        fetchMovies();
     }, []);
 
-    const deleteMovie = (id) => {
-        if (window.confirm("CZY NA PEWNO CHCESZ WYRZUCIĆ TĘ KASETĘ Z KLUBU?")) {
-            fetch(`http://localhost:3000/movies/${id}`, {method: 'DELETE'})
-                .then(() => setMovies(movies.filter(m => m.id !== id)));
+    // 3. USUWANIE FILMU
+    const handleDelete = async (id) => {
+        if (!window.confirm("WARNING: DELETE TAPE FROM DATABASE?")) return;
+
+        try {
+            await fetch(`http://localhost:3000/movies/${id}`, { method: 'DELETE' });
+            setMovies(movies.filter(m => m.id !== id));
+        } catch (err) {
+            alert("SYSTEM ERROR: DELETE FAILED");
         }
     };
+
+    // 4. OTWIERANIE MODALA (ADD vs EDIT)
+    const openModal = (movie = null) => {
+        if (movie) {
+            setCurrentMovie(movie); // Tryb edycji
+        } else {
+            // Tryb dodawania - czyścimy formularz
+            setCurrentMovie({
+                title: '',
+                director: '',
+                year: 2000,
+                category: 'Drama',
+                price: 0,
+                stock: 1,
+                image: '/images/',
+                description: '',
+                // Generujemy losowy styl dla siatki sklepu
+                style: {
+                    rotate: Math.floor(Math.random() * 10) - 5, // -5 do 5
+                    x: Math.floor(Math.random() * 20) - 10,
+                    y: Math.floor(Math.random() * 20) - 10
+                }
+            });
+        }
+        setIsModalOpen(true);
+    };
+
+    // 5. ZAPISYWANIE (POST lub PUT)
+    const handleSave = async (e) => {
+        e.preventDefault();
+
+        const isEditing = !!currentMovie.id;
+        const url = isEditing
+            ? `http://localhost:3000/movies/${currentMovie.id}`
+            : 'http://localhost:3000/movies';
+
+        const method = isEditing ? 'PUT' : 'POST';
+
+        // Konwersja typów (cena i rok muszą być liczbami)
+        const payload = {
+            ...currentMovie,
+            price: parseFloat(currentMovie.price),
+            year: parseInt(currentMovie.year),
+            stock: parseInt(currentMovie.stock)
+        };
+
+        try {
+            const res = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                fetchMovies(); // Odśwież listę
+                setIsModalOpen(false);
+            }
+        } catch (err) {
+            alert("ERROR: SAVE FAILED");
+        }
+    };
+
+    if (!user || user.role !== 'admin') return null; // Nie renderuj nic zanim nie przekieruje
+
     return (
         <div className={styles.adminWrapper}>
-            <header className={styles.adminHeader}>
-                <h1 className="main-heading">PANEL_ADMINISTRATORA</h1>
-                <button
-                    className={styles.addBtn}
-                    onClick={() => setShowAddForm(!showAddForm)}
-                >
-                    {showAddForm ? 'ZAMKNIJ' : 'DODAJ NOWY FILM +'}
-                </button>
-            </header>
+            <div className={styles.navbarContainer}><ShopNavbar /></div>
 
-            {/* Miejsce na formularz dodawania filmu */}
-            {showAddForm && (
-                <div className={styles.formCard}>
-                    <h2 className="main-heading">NOWA_KASETTA</h2>
-                    {/* Tutaj dodasz pola formularza: tytuł, rok, director itp. */}
+            <div className={styles.contentContainer}>
+                <div className={styles.header}>
+                    <h1 className={styles.title}>DATABASE_MANAGEMENT // MOVIES</h1>
+                    <button onClick={() => openModal()} className={styles.addBtn}>
+                        [+] NEW_TAPE
+                    </button>
+                </div>
+
+                <div className={styles.tableWrapper}>
+                    <table className={styles.table}>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TITLE</th>
+                            <th>STOCK</th>
+                            <th>PRICE</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {movies.map(movie => (
+                            <tr key={movie.id}>
+                                <td className={styles.idCell}>#{movie.id}</td>
+                                <td>
+                                    <div className={styles.movieName}>{movie.title}</div>
+                                    <div className={styles.subInfo}>{movie.director} ({movie.year})</div>
+                                </td>
+                                <td style={{ color: movie.stock < 5 ? 'red' : 'inherit' }}>
+                                    {movie.stock} PCS
+                                </td>
+                                <td>{movie.price} PLN</td>
+                                <td className={styles.actions}>
+                                    <button onClick={() => openModal(movie)} className={styles.editBtn}>EDIT</button>
+                                    <button onClick={() => handleDelete(movie.id)} className={styles.deleteBtn}>DEL</button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* MODAL FORMULARZA */}
+            {isModalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modalContent}>
+                        <h2>{currentMovie.id ? 'EDIT_DATA' : 'NEW_ENTRY'}</h2>
+                        <form onSubmit={handleSave} className={styles.form}>
+                            <div className={styles.row}>
+                                <div className={styles.group}>
+                                    <label>TITLE:</label>
+                                    <input required value={currentMovie.title} onChange={e => setCurrentMovie({...currentMovie, title: e.target.value})} />
+                                </div>
+                                <div className={styles.group}>
+                                    <label>DIRECTOR:</label>
+                                    <input required value={currentMovie.director} onChange={e => setCurrentMovie({...currentMovie, director: e.target.value})} />
+                                </div>
+                            </div>
+
+                            <div className={styles.row}>
+                                <div className={styles.group}>
+                                    <label>CATEGORY:</label>
+                                    <input required value={currentMovie.category} onChange={e => setCurrentMovie({...currentMovie, category: e.target.value})} />
+                                </div>
+                                <div className={styles.group}>
+                                    <label>YEAR:</label>
+                                    <input type="number" required value={currentMovie.year} onChange={e => setCurrentMovie({...currentMovie, year: e.target.value})} />
+                                </div>
+                            </div>
+
+                            <div className={styles.row}>
+                                <div className={styles.group}>
+                                    <label>PRICE (PLN):</label>
+                                    <input type="number" step="0.01" required value={currentMovie.price} onChange={e => setCurrentMovie({...currentMovie, price: e.target.value})} />
+                                </div>
+                                <div className={styles.group}>
+                                    <label>STOCK (PCS):</label>
+                                    <input type="number" required value={currentMovie.stock} onChange={e => setCurrentMovie({...currentMovie, stock: e.target.value})} />
+                                </div>
+                            </div>
+
+                            <div className={styles.group}>
+                                <label>IMAGE PATH (e.g. /images/film.jpg):</label>
+                                <input required value={currentMovie.image} onChange={e => setCurrentMovie({...currentMovie, image: e.target.value})} />
+                            </div>
+
+                            <div className={styles.group}>
+                                <label>DESCRIPTION:</label>
+                                <textarea rows="3" required value={currentMovie.description} onChange={e => setCurrentMovie({...currentMovie, description: e.target.value})} />
+                            </div>
+
+                            <div className={styles.modalActions}>
+                                <button type="button" onClick={() => setIsModalOpen(false)} className={styles.cancelBtn}>ABORT</button>
+                                <button type="submit" className={styles.saveBtn}>SAVE_DATA</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )}
-
-            <section className={styles.listSection}>
-                <h2 className="main-heading">LISTA_FILMÓW</h2>
-                <div className={styles.movieTable}>
-                    {movies.map(movie => (
-                        <div key={movie.id} className={styles.movieRow}>
-                            <span>{movie.title} ({movie.year})</span>
-                            <div className={styles.actions}>
-                                <button className={styles.editBtn}>EDYTUJ</button>
-                                <button
-                                    className={styles.deleteBtn}
-                                    onClick={() => deleteMovie(movie.id)}
-                                >
-                                    USUŃ
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
         </div>
     );
 };

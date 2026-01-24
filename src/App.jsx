@@ -20,16 +20,13 @@ function App() {
     const { user } = useAuth();
     const location = useLocation();
 
-    // 2. Lista ścieżek, na których NIE CHCEMY głównego Navbara (bo mają ShopNavbar)
     const hiddenNavbarRoutes = ['/shop', '/orders', '/movie', '/admin'];
 
-    // 3. Sprawdzamy: czy obecny adres (location.pathname) zaczyna się od któregoś z powyższych?
     const shouldHideNavbar = hiddenNavbarRoutes.some(path => location.pathname.startsWith(path));
 
     return (
         <div className="app-container">
 
-            {/* 4. Wyświetlamy Navbar TYLKO jeśli NIE jesteśmy na trasach sklepowych */}
             {!shouldHideNavbar && <Navbar/>}
 
             <CartSidebar />
@@ -69,6 +66,7 @@ function App() {
                 }/>
 
                 <Route path="*" element={<Navigate to="/" replace/>}/>
+                <Route path="/admin" element={<AdminPanel />} />
             </Routes>
         </div>
     );
