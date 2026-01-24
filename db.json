@@ -527,15 +527,6 @@
       "date": "2024-02-01"
     },
     {
-      "id": 11,
-      "movieId": 2,
-      "movieTitle": "Harry Potter and the Sorcerer's Stone",
-      "rating": 4,
-      "comment": "MAGIA DLA KAŻDEGO. POWRÓT DO DZIECIŃSTWA.",
-      "author": "WIZARD99",
-      "date": "2024-02-03"
-    },
-    {
       "id": 12,
       "movieId": 6,
       "movieTitle": "Dazed and Confused",

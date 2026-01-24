@@ -1,24 +1,28 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
-
+/* OPCJA 1: CYBERPUNK GLITCH */
+html, body, a, button, [role="button"], input, select, textarea {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(1 4)'%3E%3Cpath d='M2 6h20v16H2z' fill='%23dfbc94' stroke='%2340180f' stroke-width='2'/%3E%3Cpath fill='%2340180f' d='M22 10l6-2v12l-6-2z'/%3E%3Crect fill='%23e5a657' x='28' y='9' width='2' height='10'/%3E%3Crect fill='%23dfbc94' stroke='%2340180f' stroke-width='2' x='4' width='10' height='6' rx='1'/%3E%3Ccircle fill='%23f00' cx='6' cy='10' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") 28 16, auto !important;
+}
 @layer base {
   body {
     color: var(--white);
     font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    cursor: crosshair;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    height: 100%;
   }
 }
 
 :root {
-  /*paleta*/
-  --background:#121212;
-  --white:#f4e2ce;
-  --cream:#dfbc94;
-  --yellow:#e5a657;
-  --orange:#752710;
-  --brown:#1f0c00;
+  /* --- PALETA KOLORÓW --- */
+  --background: #121212;
+  --white: #f4e2ce;
+  --cream: #dfbc94;
+  --yellow: #e5a657;
+  --orange: #752710;
+  --brown: #1f0c00;
 
   --logo-brown: #40180f;
   --glitch-cyan: #988166;
@@ -29,8 +33,6 @@
   --heading-transform: scaleY(1.2);
   --heading-case: uppercase;
 
-
-
   color-scheme: light dark;
   background-color: var(--background);
 
@@ -40,15 +42,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.main-heading{
-  font-family: var(--font-heading),sans-serif;
+/* --- NAGŁÓWKI --- */
+.main-heading {
+  font-family: var(--font-heading), sans-serif;
   transform: var(--heading-transform);
   color: var(--heading-color);
   text-transform: var(--heading-case);
-  /*-webkit-text-stroke: 1.5px var(--heading-color);*/
-  /*paint-order: stroke fill;*/
 }
 
+/* --- EFEKT SZUMU (NOISE) --- */
 .noise-overlay {
   position: fixed;
   top: -50%;
@@ -64,7 +66,7 @@
   animation: noiseAnimation 0.25s steps(3) infinite;
 }
 
-/* Animacja bez zmian */
+/* --- ANIMACJE --- */
 @keyframes noiseAnimation {
   0% { transform: translate(0, 0); }
   10% { transform: translate(-5%, -5%); }

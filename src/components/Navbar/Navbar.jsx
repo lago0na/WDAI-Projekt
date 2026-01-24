@@ -34,7 +34,7 @@ const Navbar = () => {
                     <>
                         <li>
                             {/* Dodałem margin-right, żeby nie było za ciasno */}
-                            <span className="main-heading" style={{ color: 'var(--yellow)', fontSize: '1rem', marginRight: '5px' }}>
+                            <span className="main-heading" style={{ color: 'var(--yellow)', fontSize: '1.5rem', marginRight: '5px' }}>
                                 HELLO, {user?.username}
                             </span>
                         </li>

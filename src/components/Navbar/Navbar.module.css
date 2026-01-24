@@ -12,8 +12,6 @@
     background-color: rgba(18, 18, 18, 0.95);
     backdrop-filter: blur(5px);
     border-bottom: 1px solid rgba(223, 188, 148, 0.1);
-
-    /*wysuwanie paska*/
     transform: translateY(-102%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -23,7 +21,7 @@
     color: var(--glitch-cyan);
     padding: 5px 15px;
     font-family: 'Anton', sans-serif; /* Pasuje do reszty nagłówków */
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-transform: uppercase;
     cursor: pointer;
     letter-spacing: 1px;
@@ -33,8 +31,8 @@
 
 .logoutBtn:hover {
     background: var(--glitch-cyan);
-    color: #000; /* Czarny tekst na cyjanowym tle */
-    box-shadow: 0 0 10px var(--glitch-cyan); /* Efekt neonu */
+    color: #000;
+    box-shadow: 0 0 10px var(--glitch-cyan);
     transform: translateY(-2px);
 }
 .bigLogo{
@@ -60,7 +58,7 @@
 .navLinks a {
     color: var(--cream);
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     transition: all 0.2s ease-in-out;
