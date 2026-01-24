@@ -207,7 +207,7 @@
     }
     .screenContent {
         padding: 5px;
-        border-radius: 30% / 10%; 
+        border-radius: 30% / 10%;
     }
     .movieTitle a { font-size: 0.9rem; }
     .comment { font-size: 0.7rem; -webkit-line-clamp: 3; }
