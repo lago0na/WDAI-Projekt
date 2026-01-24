@@ -4,11 +4,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
     background-color: var(--background);
     color: var(--cream);
     font-family: var(--font-heading, 'Impact', sans-serif);
-
     position: sticky;
     top: 0;
     z-index: 1000;

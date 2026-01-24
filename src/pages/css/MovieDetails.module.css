@@ -1,114 +1,153 @@
-/* src/pages/MovieDetails.module.css */
+/* src/pages/css/MovieDetails.module.css */
 
 .container {
-    background-color: #121212; /* Ciemne tło */
+    background-color: var(--background);
     min-height: 100vh;
-    color: #E6DACE; /* Beżowy tekst */
-    padding: 2rem 4rem;
+    color: var(--white);
     display: flex;
     flex-direction: column;
 }
 
-/* Kontener dzielący na lewo (tekst) i prawo (obraz) */
 .contentWrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Wyśrodkowanie w pionie */
-    gap: 4rem; /* Odstęp między tekstem a plakatem */
-    max-width: 1400px;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-top: 2rem;
-    flex: 1; /* Rozciąga się na dostępną wysokość */
+    padding: 3rem 40px;
+    flex: 1;
 }
 
-/* --- LEWA KOLUMNA (INFO) --- */
+/* --- LEWA STRONA (TEKST) --- */
 .infoSection {
-    flex: 1; /* Zajmuje dostępną przestrzeń */
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    padding-top: 20px;
 }
 
+/* STYL TYTUŁU */
 .title {
-    font-family: var(--font-heading, 'Impact', sans-serif);
     font-size: 4rem;
-    line-height: 1;
+    line-height: 1.1;
     text-transform: uppercase;
     margin: 0;
-    color: #E6DACE;
+    color: var(--yellow, #e5a657);
     letter-spacing: 1px;
+    overflow-wrap: break-word;
+    margin-bottom: 0.5rem;
+}
+
+/* Klasa dla długich tytułów (np. "Good Will Hunting") */
+.longTitle {
+    font-size: 2.5rem; /* Mniejszy font */
+    line-height: 1.2;
 }
 
 .description {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
-    color: #ccc; /* Lekko przygaszona biel dla czytelności */
-    max-width: 600px; /* Żeby wiersze nie były za długie */
+    color: #ccc;
+    max-width: 600px;
 }
 
 .metaInfo {
     font-size: 1rem;
-    color: #fff;
-    border-left: 3px solid #E6DACE; /* Ozdobna kreseczka po lewej */
+    color: var(--white);
+    border-left: 3px solid var(--orange);
     padding-left: 1rem;
     margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.price {
-    font-size: 2rem;
+.priceRow {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.priceHighlight {
+    color: var(--yellow);
     font-weight: bold;
-    font-family: var(--font-heading);
-    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 
-/* --- PRZYCISK ADD TO CART --- */
+/* --- PRZYCISK --- */
 .addToCartBtn {
     background-color: transparent;
-    border: 2px solid #E6DACE;
-    color: #E6DACE;
+    border: 2px solid #e5a657;
+    color: #e5a657;
     padding: 1rem 3rem;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 50px; /* "Tabletka" jak na zdjęciu */
+    border-radius: 4px;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    width: 100%; /* Rozciąga się na szerokość */
-    max-width: 400px; /* Ale nie szerzej niż 400px */
+    width: 100%;
+    max-width: 300px;
     margin-top: 1rem;
     letter-spacing: 2px;
+    font-family: var(--font-heading, sans-serif);
 }
 
 .addToCartBtn:hover {
-    background-color: #E6DACE;
-    color: #121212; /* Odwrócenie kolorów po najechaniu */
+    background-color: #e5a657;
+    color: #121212;
+    box-shadow: 0 0 15px rgba(229, 166, 87, 0.4);
 }
 
-/* --- PRAWA KOLUMNA (OBRAZ) --- */
+/* --- PRAWA STRONA (OBRAZEK) --- */
 .imageSection {
     flex: 1;
     display: flex;
-    justify-content: center; /* Wyśrodkowanie obrazka */
+    justify-content: center;
 }
 
 .poster {
     width: 100%;
-    max-width: 500px; /* Maksymalna szerokość plakatu */
+    max-width: 450px;
     height: auto;
-    border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0,0,0, 0.7); /* Ładny cień */
+    border-radius: 2px;
+    /* Cień jak w popupie */
+    box-shadow: 10px 10px 30px rgba(0,0,0, 0.7);
+    border: 1px solid #333;
 }
 
-/* Responsywność na telefony */
+/* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
     .contentWrapper {
-        flex-direction: column-reverse; /* Na telefonie obrazek nad tekstem */
+        flex-direction: column-reverse;
+        align-items: center;
         gap: 2rem;
-        padding: 1rem;
+        padding: 2rem;
+    }
+
+    .infoSection {
+        width: 100%;
+        text-align: center; /* Na telefonie centrujemy tekst */
+        align-items: center;
+        border: none;
+    }
+
+    .metaInfo {
+        align-items: center;
+        border-left: none;
+        border-top: 2px solid #e5a657;
+        padding-top: 1rem;
+        padding-left: 0;
+        width: 100%;
     }
 
     .title {
         font-size: 2.5rem;
+    }
+
+    .longTitle {
+        font-size: 2rem;
     }
 
     .addToCartBtn {

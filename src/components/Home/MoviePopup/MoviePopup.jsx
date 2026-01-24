@@ -5,7 +5,6 @@ import GlitchLogo from "../../GlitchLogo/GlitchLogo.jsx";
 export default function MoviePopup({ movie, onClose }) {
     if (!movie) return null;
 
-    // 1. Sprawdzamy czy tytuł jest długi (powyżej 20 znaków)
     const isLongTitle = movie.title.length > 20;
 
     return (
