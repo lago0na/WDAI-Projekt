@@ -424,6 +424,13 @@
       "username": "kasia",
       "role": "user",
       "id": 1
+    },
+    {
+      "email": "admin@vhs.com",
+      "password": "$2a$10$.Jh521rtntTPvoMlhLgdluCBfibv9ZJmgwlcNfnXnGr0tMx50xAp.",
+      "username": "admin",
+      "role": "admin",
+      "id": 2
     }
   ],
   "opinions": [],
