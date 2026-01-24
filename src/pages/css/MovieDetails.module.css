@@ -155,4 +155,23 @@
     .addToCartBtn {
         max-width: 100%;
     }
+
+    .backLink {
+        text-decoration: none;
+        color: var(--cream);
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        display: inline-block;
+        opacity: 0.6;
+        transition: all 0.2s ease;
+    }
+
+    .backLink:hover {
+        color: #e5a657;
+        opacity: 1;
+        transform: translateX(-5px);
+    }
 }
