@@ -1,8 +1,9 @@
 // src/components/Navbar/ShopNavbar.jsx
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import styles from './ShopNavbar.module.css';
 import { useCart } from '../../context/CartContext.jsx';
 import GlitchLogo from "../GlitchLogo/GlitchLogo.jsx";
+import React from "react";
 
 export default function Navbar() {
     const { openCart, totalItems } = useCart();
@@ -18,6 +19,7 @@ export default function Navbar() {
                 <li><Link to="/about" className={styles.navLink}>About</Link></li>
                 <li><Link to="/reviews" className={styles.navLink}>Reviews</Link></li>
                 <li><Link to="/shop" className={styles.navLink}>Shop</Link></li>
+                <li><NavLink to="/contact" className={styles.navLink}>Contact</NavLink></li>
             </ul>
 
             <div className={styles.icons}>
