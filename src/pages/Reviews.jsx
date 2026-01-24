@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react'; // 1. Dodano useRef
 import { Link } from 'react-router-dom';
 import styles from './css/Reviews.module.css';
 import ShopNavbar from '../components/Navbar/ShopNavbar';
@@ -10,35 +10,29 @@ const Reviews = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { user } = useAuth();
 
-    // Formularz
+    // 2. Tworzymy referencję do kontenera, który się przewija
+    const scrollContainerRef = useRef(null);
+
     const [formData, setFormData] = useState({
         movieId: '',
         rating: 5,
         comment: ''
     });
 
-    // 1. POBIERANIE DANYCH
     useEffect(() => {
-        // Pobieramy opinie
         fetch('http://localhost:3000/reviews')
-            .then(res => {
-                if (!res.ok) throw new Error("Błąd połączenia z bazą reviews");
-                return res.json();
-            })
+            .then(res => res.json())
             .then(data => {
-                console.log("Pobrane opinie:", data); // Zobacz w konsoli (F12) czy tu są dane
-                setReviews(data.reverse()); // Najnowsze na górze
+                setReviews(data.reverse());
             })
-            .catch(err => console.error("Błąd fetch reviews:", err));
+            .catch(err => console.error("Błąd reviews:", err));
 
-        // Pobieramy filmy
         fetch('http://localhost:3000/movies')
             .then(res => res.json())
             .then(data => setMovies(data))
-            .catch(err => console.error("Błąd fetch movies:", err));
+            .catch(err => console.error("Błąd movies:", err));
     }, []);
 
-    // 2. WYSYŁANIE OPINII
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -47,7 +41,6 @@ const Reviews = () => {
             return;
         }
 
-        // Znajdujemy tytuł filmu (porównujemy jako String, żeby uniknąć błędu typów)
         const selectedMovie = movies.find(m => String(m.id) === String(formData.movieId));
 
         const newReview = {
@@ -68,19 +61,33 @@ const Reviews = () => {
 
             if (res.ok) {
                 const savedReview = await res.json();
-                setReviews([savedReview, ...reviews]); // Dodajemy do listy od razu
-                setIsModalOpen(false); // Zamykamy okno
-                setFormData({ movieId: '', rating: 5, comment: '' }); // Czyścimy formularz
+                setReviews([savedReview, ...reviews]);
+                setIsModalOpen(false);
+                setFormData({ movieId: '', rating: 5, comment: '' });
+
+                // Opcjonalnie: Przewiń na górę po dodaniu opinii, żeby user ją zobaczył
+                if (scrollContainerRef.current) {
+                    scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             }
         } catch (err) {
+            console.error("Transmission error:", err);
             alert("ERROR: CONNECTION LOST");
-            console.error(err);
+        }
+    };
+
+    // Funkcja przewijania na górę
+    const scrollToTop = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
     };
 
     const renderStars = (rating) => "★".repeat(rating) + "☆".repeat(5 - rating);
 
-    // Logika wyświetlania (12 TV na ekran)
     const pages = useMemo(() => {
         const itemsPerPage = 12;
         const totalItems = Math.max(itemsPerPage, Math.ceil(reviews.length / itemsPerPage) * itemsPerPage);
@@ -95,12 +102,12 @@ const Reviews = () => {
 
     return (
         <div className={styles.pageWrapper}>
-            {/* Navbar w kontenerze z paddingiem */}
             <div className={styles.navbarContainer}>
                 <ShopNavbar />
             </div>
 
-            <div className={styles.scrollContainer}>
+            {/* 3. Przypisujemy ref do div-a, który ma scrollbar */}
+            <div className={styles.scrollContainer} ref={scrollContainerRef}>
                 {pages.map((pageItems, pageIndex) => (
                     <section key={pageIndex} className={styles.wallSection}>
                         <div className={styles.tvGrid}>
@@ -134,13 +141,13 @@ const Reviews = () => {
                     <button onClick={() => setIsModalOpen(true)} className={styles.addBtn}>
                         ADD_REVIEW (REC ●)
                     </button>
-                    <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className={styles.navBtn}>
+                    {/* 4. Wywołujemy nową funkcję scrollToTop */}
+                    <button onClick={scrollToTop} className={styles.navBtn}>
                         TOP ▲
                     </button>
                 </div>
             </footer>
 
-            {/* MODAL */}
             {isModalOpen && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
@@ -155,12 +162,14 @@ const Reviews = () => {
                                 className={styles.input}
                             >
                                 <option value="">-- CHOOSE MOVIE --</option>
-                                {movies.sort((a,b) => a.title.localeCompare(b.title)).map(m => (
-                                    <option key={m.id} value={m.id}>{m.title}</option>
-                                ))}
+                                {movies
+                                    .sort((a, b) => a.title.localeCompare(b.title))
+                                    .map(m => (
+                                        <option key={m.id} value={m.id}>{m.title}</option>
+                                    ))}
                             </select>
 
-                            <label>RATING:</label>
+                            <label>RATING (STARS):</label>
                             <div className={styles.ratingSelect}>
                                 {[1, 2, 3, 4, 5].map(star => (
                                     <button
@@ -172,10 +181,10 @@ const Reviews = () => {
                                 ))}
                             </div>
 
-                            <label>COMMENT:</label>
+                            <label>COMMENT_DATA:</label>
                             <textarea
                                 required
-                                placeholder="TYPE HERE..."
+                                placeholder="TYPE YOUR MESSAGE HERE..."
                                 value={formData.comment}
                                 onChange={e => setFormData({...formData, comment: e.target.value})}
                                 className={styles.textarea}
@@ -183,8 +192,12 @@ const Reviews = () => {
                             />
 
                             <div className={styles.modalActions}>
-                                <button type="button" onClick={() => setIsModalOpen(false)} className={styles.cancelBtn}>CANCEL</button>
-                                <button type="submit" className={styles.submitBtn}>TRANSMIT ►</button>
+                                <button type="button" onClick={() => setIsModalOpen(false)} className={styles.cancelBtn}>
+                                    CANCEL
+                                </button>
+                                <button type="submit" className={styles.submitBtn}>
+                                    TRANSMIT ►
+                                </button>
                             </div>
                         </form>
                     </div>

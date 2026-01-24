@@ -213,3 +213,156 @@
     .comment { font-size: 0.7rem; -webkit-line-clamp: 3; }
     .footerNav { flex-direction: column; gap: 10px; text-align: center; }
 }
+.addBtn {
+    background-color: #590101;
+    color: #eccaac;
+    font-family: 'Anton', sans-serif;
+    border: 2px solid #eccaac;
+    padding: 5px 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #590101;
+    animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 5px #590101; }
+    50% { box-shadow: 0 0 15px #590101; }
+    100% { box-shadow: 0 0 5px #590101; }
+}
+
+/* Tło modala (przyciemnienie) */
+.modalOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Okienko modala */
+.modalContent {
+    background: #000;
+    border: 4px solid var(--logo-brown);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    color: var(--cream);
+    font-family: 'Anton', sans-serif;
+    box-shadow: 20px 20px 0 #111;
+    position: relative;
+}
+
+/* Linie skanujące w tle formularza dla klimatu */
+.modalContent::before {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(transparent 0px, transparent 2px, rgba(255, 255, 255, 0.05) 3px);
+    pointer-events: none;
+}
+
+.modalTitle {
+    color: var(--yellow);
+    text-align: center;
+    border-bottom: 2px dashed var(--logo-brown);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.reviewForm label {
+    color: var(--glitch-cyan);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.input, .textarea {
+    background: #1a1a1a;
+    border: 2px solid var(--cream);
+    color: var(--yellow);
+    padding: 10px;
+    font-family: monospace;
+    font-size: 1rem;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.input:focus, .textarea:focus {
+    border-color: var(--glitch-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+.textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Wybór gwiazdek */
+.ratingSelect {
+    display: flex;
+    gap: 10px;
+}
+
+.starActive {
+    background: none; border: none; font-size: 2rem;
+    color: var(--yellow); cursor: pointer; padding: 0;
+    text-shadow: 0 0 10px var(--yellow);
+}
+
+.starInactive {
+    background: none; border: none; font-size: 2rem;
+    color: #333; cursor: pointer; padding: 0;
+}
+
+/* Przyciski akcji */
+.modalActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.submitBtn {
+    background: var(--yellow);
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.submitBtn:hover {
+    background: var(--glitch-cyan);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #fff;
+}
+
+.cancelBtn {
+    background: transparent;
+    border: 2px solid #988166;
+    color: #988166;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+}
+
+.cancelBtn:hover {
+    background: #988166;
+    color: #000;
+}

@@ -997,6 +997,15 @@
       "comment": "WZRUSZAJĄCY I NOSTALGICZNY. PRZYGOTUJCIE CHUSTECZKI.",
       "author": "SOPHIE",
       "date": "2024-02-22"
+    },
+    {
+      "movieId": 14,
+      "movieTitle": "Karate Kid",
+      "rating": 3,
+      "comment": "ON WCALE NIE UMIAŁ KLARATE BRUH",
+      "author": "KASIA",
+      "date": "2026-01-24",
+      "id": 21
     }
   ]
 }
