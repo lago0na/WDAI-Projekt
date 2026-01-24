@@ -1,0 +1,137 @@
+.aboutWrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+    /* 1. KLUCZOWE: Odstęp od góry, żeby Navbar nie zasłaniał tytułu */
+    padding: 120px 20px 60px;
+}
+
+.internalNav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Żeby na telefonach przyciski przeszły do nowej linii */
+    margin-top: 1rem;
+}
+
+.navBtn {
+    color: var(--logo-brown) !important;
+    font-family: 'Anton', sans-serif;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    transition: 0.2s steps(2);
+}
+
+.navBtn:hover {
+    border-color: #000;
+    background-color: var(--yellow);
+    transform: rotate(-1deg);
+}
+
+.aboutCard {
+    background-color: var(--cream);
+    border: 5px solid #000;
+    padding: 3rem;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 20px 20px 0 #000;
+    position: relative;
+    /* Szum CRT dla klimatu */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.glitchTitle {
+    color: var(--logo-brown);
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.content {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.manifesto {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--logo-brown);
+    padding-left: 1.5rem;
+}
+
+.highlight {
+    background-color: var(--yellow);
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.ctaSection {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 3px dashed #000;
+}
+
+.suggestion {
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.shopBtn {
+    display: inline-block;
+    background-color: var(--logo-brown);
+    color: var(--cream) !important;
+    border: 3px solid #000;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    box-shadow: 8px 8px 0 #000;
+    transition: all 0.1s steps(2);
+}
+
+.shopBtn:hover {
+    background-color: #000;
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 #000;
+}
+
+.footerInfo {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--logo-brown);
+    opacity: 0.7;
+    font-family: monospace;
+}
+
+/* Responsywność */
+@media (max-width: 480px) {
+    .aboutCard {
+        padding: 1.5rem;
+    }
+    .glitchTitle {
+        font-size: 2rem;
+    }
+    .manifesto {
+        font-size: 1.1rem;
+    }
+}

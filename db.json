@@ -426,8 +426,9 @@
     },
     {
       "id": "2",
-      "username": "LoginPartnerki",
-      "password": "password123",
+      "email": "kassimma@icloud.com",
+      "username": "kasia",
+      "password": "lol123",
       "role": "user"
     },
     {
@@ -442,6 +443,13 @@
       "username": "test",
       "role": "user",
       "id": "GW4Jj2_"
+    },
+    {
+      "email": "kasia@gmail.com",
+      "password": "$2a$10$5YvOkN5a0Eu.ees7OvpNv.npxuXEarofc5xgoMaSgKyv.XPItC8LW",
+      "username": "kasia123",
+      "role": "user",
+      "id": "i_1XLBz"
     }
   ],
   "opinions": [],
@@ -692,6 +700,114 @@
       "totalAmount": 1175.97,
       "status": "COMPLETED",
       "id": 6
+    },
+    {
+      "userId": "GW4Jj2_",
+      "userEmail": "test@gmail.com",
+      "date": "2026-01-08T14:08:50.703Z",
+      "items": [
+        {
+          "id": "6",
+          "title": "Dazed and Confused",
+          "description": "The adventures of high school and junior high students on the last day of school in May 1976.",
+          "director": "Richard Linklater",
+          "year": 1993,
+          "category": "Comedy",
+          "price": 70.99,
+          "stock": 53,
+          "image": "/images/dazed&confused.jpg",
+          "style": {
+            "rotate": -2,
+            "x": 10,
+            "y": -5
+          },
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 70.99,
+      "status": "COMPLETED",
+      "id": 7
+    },
+    {
+      "userId": "GW4Jj2_",
+      "userEmail": "test@gmail.com",
+      "date": "2026-01-08T14:09:48.687Z",
+      "items": [
+        {
+          "id": "12",
+          "title": "Sanatorium pod Klepsydrą",
+          "description": "Józef visits his dying father at a remote mental institution, where time itself doesn't seem to exist.",
+          "director": "Wojciech Has",
+          "year": 1973,
+          "category": "Fantasy",
+          "price": 999.99,
+          "stock": 50,
+          "image": "/images/sanatorium.jpg",
+          "style": {
+            "rotate": -1,
+            "x": 0,
+            "y": -5
+          },
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 999.99,
+      "status": "COMPLETED",
+      "id": 8
+    },
+    {
+      "userId": "GW4Jj2_",
+      "userEmail": "test@gmail.com",
+      "date": "2026-01-08T14:10:25.553Z",
+      "items": [
+        {
+          "id": "9",
+          "title": "The Matrix Reloaded",
+          "description": "Freedom fighters Neo, Trinity and Morpheus continue to lead the revolt against the Machine Army.",
+          "director": "Lana Wachowski,Lilly Wachowski",
+          "year": 2003,
+          "category": "Sci-Fi",
+          "price": 33.99,
+          "stock": 3,
+          "image": "/images/matrix.jpg",
+          "style": {
+            "rotate": 4,
+            "x": 8,
+            "y": -8
+          },
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 33.99,
+      "status": "COMPLETED",
+      "id": 9
+    },
+    {
+      "userId": "GW4Jj2_",
+      "userEmail": "test@gmail.com",
+      "date": "2026-01-08T14:10:36.219Z",
+      "items": [
+        {
+          "id": "9",
+          "title": "The Matrix Reloaded",
+          "description": "Freedom fighters Neo, Trinity and Morpheus continue to lead the revolt against the Machine Army.",
+          "director": "Lana Wachowski,Lilly Wachowski",
+          "year": 2003,
+          "category": "Sci-Fi",
+          "price": 33.99,
+          "stock": 3,
+          "image": "/images/matrix.jpg",
+          "style": {
+            "rotate": 4,
+            "x": 8,
+            "y": -8
+          },
+          "quantity": 3
+        }
+      ],
+      "totalAmount": 101.97,
+      "status": "COMPLETED",
+      "id": 10
     }
   ]
 }
