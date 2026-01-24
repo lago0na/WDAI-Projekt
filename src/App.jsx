@@ -20,7 +20,6 @@ function App() {
     const { user } = useAuth();
     const location = useLocation();
 
-    // 2. Lista ścieżek, na których NIE CHCEMY głównego Navbara (bo mają ShopNavbar)
     const hiddenNavbarRoutes = ['/shop', '/orders', '/movie', '/admin'];
 
     // 3. Sprawdzamy: czy obecny adres (location.pathname) zaczyna się od któregoś z powyższych?

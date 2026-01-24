@@ -13,7 +13,7 @@
     z-index: 1;
     transform: translateZ(0);
     transition: transform 0.2s ease-in-out;
-    text-decoration: none; /* Ważne, jeśli użyjesz go wewnątrz Link */
+    text-decoration: none;
 }
 
 .logo::before,
