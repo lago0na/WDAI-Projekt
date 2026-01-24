@@ -1,0 +1,204 @@
+.contactWrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    /* Usuwamy górny padding wrapper'a, bo navbar jest teraz pozycjonowany absolutnie i ma swój padding */
+    padding: 100px 20px 60px;
+    position: relative; /* Ważne dla pozycjonowania navbara */
+}
+
+/* --- NAPRAWA TŁA NAVBARA --- */
+.navbarWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 30px 4rem 0 4rem; /* Odstęp od krawędzi */
+}
+
+/* To wymusza przezroczystość na komponencie ShopNavbar */
+.navbarWrapper > nav {
+    background-color: transparent !important;
+    padding-bottom: 0 !important;
+}
+
+/* Reszta stylów bez zmian... */
+.contactCard {
+    background-color: var(--cream, #dfbc94);
+    border: 5px solid #000;
+    padding: 3rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 20px 20px 0 #000;
+    position: relative;
+    color: var(--logo-brown, #40180f);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* ... (reszta Twojego kodu CSS z poprzedniego kroku: .headerSection, .splitLayout, etc.) ... */
+
+/* Kopiuję resztę dla pewności, żebyś miała kompletny plik: */
+
+.headerSection {
+    border-bottom: 4px solid #000;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.glitchTitle {
+    font-family: 'Anton', sans-serif;
+    font-size: 3.5rem;
+    line-height: 0.9;
+    margin: 0;
+    color: var(--logo-brown, #40180f);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.7;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.splitLayout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+}
+
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-right: 2px dashed #000;
+    padding-right: 2rem;
+}
+
+.infoBlock h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    background: #000;
+    color: var(--cream, #dfbc94);
+    display: inline-block;
+    padding: 2px 8px;
+    text-transform: uppercase;
+}
+
+.infoBlock p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.highlight {
+    font-size: 1.2rem !important;
+    font-weight: 800 !important;
+    color: #000;
+    text-decoration: underline;
+}
+
+.small {
+    font-size: 0.8rem !important;
+    font-family: monospace !important;
+    opacity: 0.8;
+}
+
+.formColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputGroup label {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.formColumn input,
+.formColumn textarea {
+    background: transparent;
+    border: 3px solid #000;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.formColumn input:focus,
+.formColumn textarea:focus {
+    background: #fff;
+    box-shadow: 5px 5px 0 var(--yellow, #ffb800);
+}
+
+.formColumn textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submitBtn {
+    background: var(--logo-brown, #40180f);
+    color: var(--cream, #dfbc94);
+    border: 3px solid #000;
+    padding: 15px;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 6px 6px 0 #000;
+    transition: transform 0.1s;
+    margin-top: 10px;
+}
+
+.submitBtn:hover {
+    background: #000;
+    color: var(--yellow, #ffb800);
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #000;
+}
+
+.footerInfo {
+    margin-top: 2rem;
+    border-top: 2px solid #000;
+    padding-top: 1rem;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .navbarWrapper { padding: 20px 2rem 0 2rem; }
+    .splitLayout { grid-template-columns: 1fr; gap: 2rem; }
+    .infoColumn { border-right: none; border-bottom: 2px dashed #000; padding-right: 0; padding-bottom: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+    .contactCard { padding: 1.5rem; }
+    .glitchTitle { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+    .navbarWrapper { padding: 15px 1rem 0 1rem; }
+    .contactWrapper { padding: 90px 15px 40px; }
+    .infoColumn { flex-direction: column; }
+}

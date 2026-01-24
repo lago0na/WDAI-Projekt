@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react'; // 1. Dodano useRef
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './css/Reviews.module.css';
 import ShopNavbar from '../components/Navbar/ShopNavbar';
@@ -106,7 +106,6 @@ const Reviews = () => {
                 <ShopNavbar />
             </div>
 
-            {/* 3. Przypisujemy ref do div-a, który ma scrollbar */}
             <div className={styles.scrollContainer} ref={scrollContainerRef}>
                 {pages.map((pageItems, pageIndex) => (
                     <section key={pageIndex} className={styles.wallSection}>
@@ -141,7 +140,6 @@ const Reviews = () => {
                     <button onClick={() => setIsModalOpen(true)} className={styles.addBtn}>
                         ADD_REVIEW (REC ●)
                     </button>
-                    {/* 4. Wywołujemy nową funkcję scrollToTop */}
                     <button onClick={scrollToTop} className={styles.navBtn}>
                         TOP ▲
                     </button>
