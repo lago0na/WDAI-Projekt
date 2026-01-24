@@ -9,7 +9,6 @@ const Reviews = () => {
     const [movies, setMovies] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // 1. Wyciągamy 'user' z kontekstu, żeby sprawdzić rolę
     const { user } = useAuth();
 
     const scrollContainerRef = useRef(null);
@@ -20,7 +19,6 @@ const Reviews = () => {
         comment: ''
     });
 
-    // POBIERANIE DANYCH (bez zmian)
     useEffect(() => {
         fetch('http://localhost:3000/reviews')
             .then(res => res.json())
@@ -33,9 +31,7 @@ const Reviews = () => {
             .catch(err => console.error(err));
     }, []);
 
-    // 2. NOWA FUNKCJA: USUWANIE OPINII (Tylko Admin)
     const handleDelete = async (reviewId) => {
-        // Zabezpieczenie na poziomie frontendu
         if (user?.role !== 'admin') {
             alert("ACCESS DENIED: ADMIN ONLY.");
             return;
@@ -51,7 +47,6 @@ const Reviews = () => {
             });
 
             if (res.ok) {
-                // Usuwamy z lokalnego stanu, żeby zniknęło natychmiast
                 setReviews(reviews.filter(r => r.id !== reviewId));
             } else {
                 alert("ERROR: DELETE FAILED.");
@@ -62,7 +57,6 @@ const Reviews = () => {
         }
     };
 
-    // WYSYŁANIE (bez zmian)
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) { alert("LOGIN REQUIRED"); return; }
@@ -119,7 +113,6 @@ const Reviews = () => {
                                         {item ? (
                                             <div className={styles.reviewInner}>
 
-                                                {/* 3. PRZYCISK ADMINA - Widoczny tylko dla roli 'admin' */}
                                                 {user?.role === 'admin' && (
                                                     <button
                                                         onClick={() => handleDelete(item.id)}
@@ -155,16 +148,11 @@ const Reviews = () => {
                     <button onClick={() => { if(scrollContainerRef.current) scrollContainerRef.current.scrollTo({top:0, behavior:'smooth'}) }} className={styles.navBtn}>TOP ▲</button>
                 </div>
             </footer>
-
-            {/* MODAL (tutaj wklej resztę swojego kodu modala bez zmian) */}
             {isModalOpen && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
-                        {/* ... kod formularza ... */}
-                        {/* Skopiuj go ze swojego poprzedniego pliku, bo tu nic nie zmieniamy */}
                         <h2 className={styles.modalTitle}>NEW_TRANSMISSION</h2>
                         <form onSubmit={handleSubmit} className={styles.reviewForm}>
-                            {/* ... inputy ... */}
                             <label>SELECT_TAPE:</label>
                             <select required value={formData.movieId} onChange={e=>setFormData({...formData, movieId:e.target.value})} className={styles.input}>
                                 <option value="">-- CHOOSE --</option>

@@ -1,4 +1,4 @@
-// src/components/MoviePopup.jsx
+
 import styles from './MoviePopup.module.css';
 import GlitchLogo from "../../GlitchLogo/GlitchLogo.jsx";
 

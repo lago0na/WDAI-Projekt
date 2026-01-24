@@ -10,8 +10,6 @@ const AdminPanel = () => {
 
     const [movies, setMovies] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // Stan dla edytowanego/nowego filmu
     const [currentMovie, setCurrentMovie] = useState({
         title: '',
         director: '',
@@ -23,14 +21,12 @@ const AdminPanel = () => {
         description: ''
     });
 
-    // 1. ZABEZPIECZENIE - Przekieruj jeśli nie admin
     useEffect(() => {
         if (!user || user.role !== 'admin') {
             navigate('/');
         }
     }, [user, navigate]);
 
-    // 2. POBIERANIE FILMÓW
     const fetchMovies = () => {
         fetch('http://localhost:3000/movies')
             .then(res => res.json())
@@ -42,7 +38,6 @@ const AdminPanel = () => {
         fetchMovies();
     }, []);
 
-    // 3. USUWANIE FILMU
     const handleDelete = async (id) => {
         if (!window.confirm("WARNING: DELETE TAPE FROM DATABASE?")) return;
 
@@ -54,12 +49,11 @@ const AdminPanel = () => {
         }
     };
 
-    // 4. OTWIERANIE MODALA (ADD vs EDIT)
     const openModal = (movie = null) => {
         if (movie) {
-            setCurrentMovie(movie); // Tryb edycji
+            setCurrentMovie(movie);
         } else {
-            // Tryb dodawania - czyścimy formularz
+
             setCurrentMovie({
                 title: '',
                 director: '',
@@ -69,7 +63,6 @@ const AdminPanel = () => {
                 stock: 1,
                 image: '/images/',
                 description: '',
-                // Generujemy losowy styl dla siatki sklepu
                 style: {
                     rotate: Math.floor(Math.random() * 10) - 5, // -5 do 5
                     x: Math.floor(Math.random() * 20) - 10,
@@ -80,7 +73,6 @@ const AdminPanel = () => {
         setIsModalOpen(true);
     };
 
-    // 5. ZAPISYWANIE (POST lub PUT)
     const handleSave = async (e) => {
         e.preventDefault();
 
@@ -90,8 +82,6 @@ const AdminPanel = () => {
             : 'http://localhost:3000/movies';
 
         const method = isEditing ? 'PUT' : 'POST';
-
-        // Konwersja typów (cena i rok muszą być liczbami)
         const payload = {
             ...currentMovie,
             price: parseFloat(currentMovie.price),
@@ -107,7 +97,7 @@ const AdminPanel = () => {
             });
 
             if (res.ok) {
-                fetchMovies(); // Odśwież listę
+                fetchMovies();
                 setIsModalOpen(false);
             }
         } catch (err) {
@@ -115,7 +105,7 @@ const AdminPanel = () => {
         }
     };
 
-    if (!user || user.role !== 'admin') return null; // Nie renderuj nic zanim nie przekieruje
+    if (!user || user.role !== 'admin') return null;
 
     return (
         <div className={styles.adminWrapper}>
@@ -163,7 +153,6 @@ const AdminPanel = () => {
                 </div>
             </div>
 
-            {/* MODAL FORMULARZA */}
             {isModalOpen && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>

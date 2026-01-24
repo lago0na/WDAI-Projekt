@@ -9,7 +9,6 @@ const Profile = () => {
 
     useEffect(() => {
         if (user && token) {
-            // Pobieramy zamówienia tylko dla tego użytkownika
             fetch(`http://localhost:3000/orders?userId=${user.id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -17,7 +16,6 @@ const Profile = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    // Sortujemy od najnowszych
                     setOrders(data.sort((a, b) => new Date(b.date) - new Date(a.date)));
                 })
                 .catch(err => console.error("Błąd pobierania historii:", err));
@@ -31,16 +29,12 @@ const Profile = () => {
             <Navbar />
 
             <div className={styles.container}>
-
-                {/* NAGŁÓWEK + WYLOGUJ */}
                 <div className={styles.header}>
                     <h1 className="main-heading">MEMBER_PROFILE</h1>
                     <button onClick={logout} className={styles.logoutBtn}>
                         [EJECT SESSION]
                     </button>
                 </div>
-
-                {/* DANE UŻYTKOWNIKA */}
                 <div className={styles.userCard}>
                     <div className={styles.avatarPlaceholder}>
                         {user.username.charAt(0).toUpperCase()}
@@ -52,8 +46,6 @@ const Profile = () => {
                         <p><span className={styles.label}>ROLE:</span> {user.role.toUpperCase()}</p>
                     </div>
                 </div>
-
-                {/* HISTORIA ZAMÓWIEŃ */}
                 <div className={styles.historySection}>
                     <h2 className="main-heading">PURCHASE_HISTORY ({orders.length})</h2>
 

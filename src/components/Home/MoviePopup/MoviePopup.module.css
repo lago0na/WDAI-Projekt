@@ -1,6 +1,4 @@
-/* src/components/MoviePopup.module.css */
 
-/* Tło zaciemniające cały ekran */
 .overlay {
     position: fixed;
     top: 0;
@@ -17,7 +15,6 @@
     animation: fadeIn 0.3s ease;
 }
 
-/* Okno z treścią */
 .popupContent {
     --popup-border-color: var(--yellow);
     background-color:var(--background);
@@ -167,7 +164,6 @@
         margin-bottom: 1rem; /* Dodatkowy odstęp pod obrazkiem */
     }
 
-    /* --- NOWOŚĆ: NAPRAWA TYTUŁU --- */
     .title {
         /* Używamy !important, aby nadpisać styl liniowy (style={{...}}) z JSX.
            Na małych ekranach tytuł będzie miał max 2.5rem, niezależnie od długości.

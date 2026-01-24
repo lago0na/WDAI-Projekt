@@ -1,4 +1,4 @@
-// src/components/GlitchLogo/GlitchLogo.jsx
+
 import React from 'react';
 import styles from './GlitchLogo.module.css';
 

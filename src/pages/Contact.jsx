@@ -17,7 +17,6 @@ const Contact = () => {
 
     return (
         <div className={styles.contactWrapper}>
-            {/* Używamy klasy CSS zamiast inline stylów, żeby wymusić przezroczystość */}
             <div className={styles.navbarWrapper}>
                 <ShopNavbar />
             </div>
@@ -29,7 +28,6 @@ const Contact = () => {
                 </div>
 
                 <div className={styles.splitLayout}>
-                    {/* LEWA STRONA */}
                     <div className={styles.infoColumn}>
                         <div className={styles.infoBlock}>
                             <h3>HEADQUARTERS:</h3>
@@ -50,7 +48,6 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* PRAWA STRONA */}
                     <form onSubmit={handleSubmit} className={styles.formColumn}>
                         <div className={styles.inputGroup}>
                             <label>CODENAME:</label>

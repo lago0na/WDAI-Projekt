@@ -1,4 +1,4 @@
-// src/pages/Shop.jsx
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './css/Shop.module.css';
@@ -9,7 +9,6 @@ export default function Shop() {
     const [sortOption, setSortOption] = useState('featured');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    // Stan wyszukiwarki zostaje tutaj
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
@@ -48,15 +47,15 @@ export default function Shop() {
 
     return (
         <div className={styles.shopContainer}>
-            {/* Navbar jest teraz "czysty", nie potrzebuje propsów */}
+
             <ShopNavbar />
 
             <h1 className={`${styles.pageTitle} main-heading`}>SHOP MOVIES</h1>
 
-            {/* --- TOOLBAR: SEARCH | FILTER | SORT --- */}
+
             <div className={styles.toolbar}>
 
-                {/* 1. NOWA SEKCJA WYSZUKIWANIA W TOOLBARZE */}
+
                 <div className={styles.searchWrapper}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px', opacity: 0.7}}>
                         <circle cx="11" cy="11" r="8"></circle>
@@ -103,7 +102,6 @@ export default function Shop() {
                     </div>
                 </div>
             </div>
-            {/* --- KONIEC TOOLBARA --- */}
 
             <div className={styles.productsGrid}>
                 {displayMovies.length > 0 ? (
