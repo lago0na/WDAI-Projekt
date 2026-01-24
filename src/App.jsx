@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'; // <--- DODANO useLocation
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import { useAuth } from './context/AuthContext/AuthContext';
@@ -18,7 +18,7 @@ import CartSidebar from "./components/Navbar/CartSidebar.jsx";
 
 function App() {
     const { user } = useAuth();
-    const location = useLocation(); // <--- 1. Pobieramy aktualną ścieżkę
+    const location = useLocation();
 
     // 2. Lista ścieżek, na których NIE CHCEMY głównego Navbara (bo mają ShopNavbar)
     const hiddenNavbarRoutes = ['/shop', '/orders', '/movie', '/admin'];

@@ -4,12 +4,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 1.5rem;
-    background-color:var(--background);
+    padding: 1.5rem 2rem;
+    background-color: var(--background);
     color: var(--cream);
     font-family: var(--font-heading, 'Impact', sans-serif);
-    position: sticky; /* Przykleja element */
-    top: 0;           /* Do samej góry */
+
+    position: sticky;
+    top: 0;
     z-index: 1000;
 }
 

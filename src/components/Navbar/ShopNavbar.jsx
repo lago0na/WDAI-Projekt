@@ -21,13 +21,7 @@ export default function Navbar() {
             </ul>
 
             <div className={styles.icons}>
-                {/* Lupa */}
-                <svg xmlns="http://www.w3.org/2000/svg" className={styles.icon} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-
-                {/* Wózek - Tu używasz openCart */}
+                {/* Wózek */}
                 <div onClick={openCart} style={{cursor: 'pointer', position: 'relative'}}>
                     <svg xmlns="http://www.w3.org/2000/svg" className={styles.icon} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -35,7 +29,7 @@ export default function Navbar() {
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
 
-                    {/* Licznik (opcjonalnie, jeśli go nie masz, możesz usunąć ten blok) */}
+                    {/* Licznik */}
                     {totalItems > 0 && (
                         <span style={{
                             position: 'absolute', top: '-5px', right: '-5px',

@@ -7,9 +7,10 @@ import ShopNavbar from '../components/Navbar/ShopNavbar';
 export default function Shop() {
     const [movies, setMovies] = useState([]);
     const [sortOption, setSortOption] = useState('featured');
-
-    // 1. NOWY STAN: Wybrana kategoria (domyślnie 'All' czyli wszystkie)
     const [selectedCategory, setSelectedCategory] = useState('All');
+
+    // Stan wyszukiwarki zostaje tutaj
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:3000/movies')
@@ -18,34 +19,28 @@ export default function Shop() {
             .catch((err) => console.error("Błąd:", err));
     }, []);
 
-    // 2. LOGIKA: Wyciągamy unikalne kategorie z listy filmów
-    // Set usuwa duplikaty, więc dostaniemy czystą listę ["Action", "Drama", "Sci-Fi"...]
     const categories = ["All", ...new Set(movies.map(movie => movie.category))];
 
-    // 3. LOGIKA: Główna funkcja (Filtrowanie + Sortowanie)
     const getProcessedMovies = () => {
-        // KROK A: Filtrowanie
         let filteredMovies = movies;
 
         if (selectedCategory !== 'All') {
-            filteredMovies = movies.filter(movie => movie.category === selectedCategory);
+            filteredMovies = filteredMovies.filter(movie => movie.category === selectedCategory);
         }
 
-        // KROK B: Sortowanie (pracujemy już na przefiltrowanej liście)
-        // Musimy zrobić kopię [...filteredMovies], żeby sort() zadziałał poprawnie
-        const sorted = [...filteredMovies];
+        if (searchQuery.trim() !== '') {
+            filteredMovies = filteredMovies.filter(movie =>
+                movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
 
+        const sorted = [...filteredMovies];
         switch (sortOption) {
-            case 'price-low':
-                return sorted.sort((a, b) => a.price - b.price);
-            case 'price-high':
-                return sorted.sort((a, b) => b.price - a.price);
-            case 'az':
-                return sorted.sort((a, b) => a.title.localeCompare(b.title));
-            case 'za':
-                return sorted.sort((a, b) => b.title.localeCompare(a.title));
-            default:
-                return sorted;
+            case 'price-low': return sorted.sort((a, b) => a.price - b.price);
+            case 'price-high': return sorted.sort((a, b) => b.price - a.price);
+            case 'az': return sorted.sort((a, b) => a.title.localeCompare(b.title));
+            case 'za': return sorted.sort((a, b) => b.title.localeCompare(a.title));
+            default: return sorted;
         }
     };
 
@@ -53,71 +48,82 @@ export default function Shop() {
 
     return (
         <div className={styles.shopContainer}>
+            {/* Navbar jest teraz "czysty", nie potrzebuje propsów */}
             <ShopNavbar />
+
             <h1 className={`${styles.pageTitle} main-heading`}>SHOP MOVIES</h1>
 
+            {/* --- TOOLBAR: SEARCH | FILTER | SORT --- */}
             <div className={styles.toolbar}>
 
-                {/* 4. UI: Zmieniamy statyczny napis na działający filtr */}
-                <div className={styles.filterOption}>
-                    <span>FILTER:</span>
-                    <select
-                        className={styles.sortSelect}
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                    >
-                        {/* Mapujemy dostępne kategorie do opcji w liście */}
-                        {categories.map(category => (
-                            <option key={category} value={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </select>
+                {/* 1. NOWA SEKCJA WYSZUKIWANIA W TOOLBARZE */}
+                <div className={styles.searchWrapper}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px', opacity: 0.7}}>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input
+                        type="text"
+                        placeholder="SEARCH TITLE..."
+                        className={styles.toolbarInput}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                 </div>
 
-                <div className={styles.sortOption}>
-                    <span>SORT BY:</span>
-                    <select
-                        className={styles.sortSelect}
-                        value={sortOption}
-                        onChange={(e) => setSortOption(e.target.value)}
-                    >
-                        <option value="featured">Featured</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="az">Name: A-Z</option>
-                        <option value="za">Name: Z-A</option>
-                    </select>
+                <div className={styles.controlsRight}>
+                    <div className={styles.filterOption}>
+                        <span>FILTER:</span>
+                        <select
+                            className={styles.sortSelect}
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                        >
+                            {categories.map(category => (
+                                <option key={category} value={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
-                    <span className={styles.productCount}>
-             &nbsp;&nbsp; {displayMovies.length} PRODUCTS
-          </span>
+                    <div className={styles.sortOption}>
+                        <span>SORT:</span>
+                        <select
+                            className={styles.sortSelect}
+                            value={sortOption}
+                            onChange={(e) => setSortOption(e.target.value)}
+                        >
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="az">Name: A-Z</option>
+                            <option value="za">Name: Z-A</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+            {/* --- KONIEC TOOLBARA --- */}
 
             <div className={styles.productsGrid}>
-                {/* Wyświetlamy filmy po przetworzeniu (przefiltrowane i posortowane) */}
-                {displayMovies.map((movie) => (
-                    <Link
-                        to={`/movie/${movie.id}`}
-                        key={movie.id}
-                        className={styles.productCard}
-                    >
-                        <div className={styles.imageContainer}>
-                            <img
-                                src={movie.poster || movie.image}
-                                alt={movie.title}
-                                className={styles.productImage}
-                            />
-                        </div>
-                        <div className={styles.productInfo}>
-                            <h3 className={styles.movieTitle}>{movie.title}</h3>
-                            <span className={styles.moviePrice}>
-                {movie.price ? `${movie.price} zł` : '-'}
-              </span>
-                        </div>
-                    </Link>
-                ))}
+                {displayMovies.length > 0 ? (
+                    displayMovies.map((movie) => (
+                        <Link to={`/movie/${movie.id}`} key={movie.id} className={styles.productCard}>
+                            <div className={styles.imageContainer}>
+                                <img src={movie.poster || movie.image} alt={movie.title} className={styles.productImage} />
+                            </div>
+                            <div className={styles.productInfo}>
+                                <h3 className={styles.movieTitle}>{movie.title}</h3>
+                                <span className={styles.moviePrice}>{movie.price ? `${movie.price} zł` : '-'}</span>
+                            </div>
+                        </Link>
+                    ))
+                ) : (
+                    <div style={{gridColumn: '1 / -1', textAlign: 'center', padding: '50px', opacity: 0.6}}>
+                        <h2>[ NO TAPES FOUND ]</h2>
+                        <p>TRY ANOTHER SEARCH TERM</p>
+                    </div>
+                )}
             </div>
         </div>
     );
