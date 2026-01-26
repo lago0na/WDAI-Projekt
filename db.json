@@ -431,54 +431,23 @@
       "username": "test",
       "role": "user",
       "id": 2
+    },
+    {
+      "email": "kokos@gmail.com",
+      "password": "$2a$10$jBt8CaKDHOt832TJYGB2h.NtpLBO6X8KpfZPXC8r5zdz//bLYzydy",
+      "username": "kokos",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "admin@vhs.com",
+      "password": "$2a$10$JotoJ6WrgWJ9TcnfkxR33Ok8875lRfPUJPj0Mf9uKq4KNVGMuk/T2",
+      "username": "admin",
+      "role": "admin",
+      "id": 4
     }
   ],
-  "opinions": [],
   "orders": [
-    {
-      "userId": "GW4Jj2_",
-      "userEmail": "test@gmail.com",
-      "date": "2026-01-24T19:16:55.243Z",
-      "items": [
-        {
-          "id": "2",
-          "title": "Harry Potter and the Sorcerer's Stone",
-          "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
-          "director": "Chris Columbus",
-          "year": 2001,
-          "category": "Fantasy",
-          "price": 24,
-          "stock": 15,
-          "image": "/images/harrypotter.jpg",
-          "style": {
-            "rotate": 2,
-            "x": 5,
-            "y": -2
-          },
-          "quantity": 1
-        },
-        {
-          "id": "18",
-          "title": "Twin Peaks: Fire Walk with Me",
-          "description": "Laura Palmer's harrowing final days are chronicled one year after the murder of Teresa Banks.",
-          "director": "David Lynch",
-          "year": 1992,
-          "category": "Mystery",
-          "price": 45.99,
-          "stock": 87,
-          "image": "/images/twinpeaks.jpg",
-          "style": {
-            "rotate": -3,
-            "x": -8,
-            "y": 5
-          },
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 69.99000000000001,
-      "status": "COMPLETED",
-      "id": 1
-    },
     {
       "userId": 2,
       "userEmail": "test@gmail.com",
@@ -505,6 +474,84 @@
       "totalAmount": 88.99,
       "status": "COMPLETED",
       "id": 2
+    },
+    {
+      "userId": 3,
+      "userEmail": "kokos@gmail.com",
+      "date": "2026-01-26T16:26:15.568Z",
+      "items": [
+        {
+          "id": "22",
+          "title": "Good Will Hunting",
+          "description": "A therapist counsels Will Hunting, a janitor with a genius IQ.",
+          "director": "Gus Van Sant",
+          "year": 1997,
+          "category": "Drama",
+          "price": 56,
+          "stock": 8,
+          "image": "/images/goodwill.jpg",
+          "style": {
+            "rotate": -2,
+            "x": 10,
+            "y": 0
+          },
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "title": "Back to the Future",
+          "description": "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean.",
+          "director": "Robert Zemeckis",
+          "year": 1985,
+          "category": "Sci-Fi",
+          "price": 35,
+          "stock": 10,
+          "image": "/images/bttf.jpg",
+          "style": {
+            "rotate": -4,
+            "x": -8,
+            "y": 0
+          },
+          "quantity": 1
+        },
+        {
+          "id": "13",
+          "title": "Aftersun",
+          "description": "Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier.",
+          "director": "Charlotte Wells",
+          "year": 2022,
+          "category": "Drama",
+          "price": 35,
+          "stock": 2,
+          "image": "/images/aftersun.jpg",
+          "style": {
+            "rotate": 4,
+            "x": -5,
+            "y": 5
+          },
+          "quantity": 2
+        },
+        {
+          "id": "19",
+          "title": "Taxi Driver",
+          "description": "A mentally unstable veteran works as a nighttime taxi driver in New York City.",
+          "director": "Martin Scorsese",
+          "year": 1976,
+          "category": "Crime",
+          "price": 13.99,
+          "stock": 3,
+          "image": "/images/taxidriver.jpg",
+          "style": {
+            "rotate": 2,
+            "x": 5,
+            "y": 0
+          },
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 174.99,
+      "status": "COMPLETED",
+      "id": 3
     }
   ],
   "reviews": [

@@ -1,20 +1,49 @@
-<<<<<<< HEAD
-# React + Vite
+# 📼 VHS_CLUB - Retro Video Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**VHS_CLUB** to stylizowany na lata 80. i estetykę Cyberpunk sklep internetowy (wypożyczalnia) z kultowymi filmami na kasetach VHS. Projekt łączy nowoczesne technologie webowe z nostalgicznym designem (efekty CRT, glitch, szum, surowy interfejs).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Demo i Prezentacja
 
-## React Compiler
+Tu możesz zobaczyć nasz projekt w akcji:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🎬 Wideo prezentacja (YouTube):** [WKLEJ TUTAJ LINK DO FILMU NA YT]
+- **🌍 Strona online (Live Demo):** [WKLEJ TUTAJ LINK DO DZIAŁAJĄCEJ STRONY WWW]
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# WDAI-Projekt
->>>>>>> 7b4e40e08212bc492d88d84101a8d27a819674a6
+## 👥 Autorzy (Grupa Projektowa)
+
+* **Katarzyna Piskorz**
+* **Jagoda Pietras** 
+
+---
+
+## 🛠️ Technologie i Biblioteki
+
+Projekt został zrealizowany przy użyciu:
+
+* **Frontend:**
+    * [React](https://react.dev/) (Vite) - Główny framework.
+    * [React Router DOM](https://reactrouter.com/) - Obsługa routingu (podstron).
+    * [Tailwind CSS](https://tailwindcss.com/) - Stylowanie i responsywność.
+    * **CSS Modules** - Dedykowane style dla komponentów.
+* **Backend (Mock):**
+    * [JSON Server](https://github.com/typicode/json-server) - Symulacja REST API.
+    * [JSON Server Auth](https://github.com/jeremyben/json-server-auth) - Obsługa rejestracji, logowania i tokenów JWT.
+* **Design & Assets:**
+    * Google Fonts (Anton, Inter).
+    * Custom SVG Cursors & Icons.
+    * CSS Animations (Glitch, CRT Noise, Scanlines).
+
+---
+
+## 🚀 Instalacja i Uruchomienie (Lokalnie)
+
+Aby uruchomić projekt na własnym komputerze, wykonaj następujące kroki:
+
+### 1. Klonowanie repozytorium
+```bash
+git clone [LINK_DO_TWOJEGO_REPOZYTORIUM]
+cd vhs_club
