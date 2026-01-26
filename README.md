@@ -79,28 +79,31 @@ ADMIN	admin@vhs.club	admin123	Panel Admina, Dodawanie/Usuwanie filmów, Usuwanie
 USER	kokos@gmail.com	kokos	Przeglądanie, Zakupy, Dodawanie opinii
 
 ## 🌟 Funkcjonalności
-### 1. Strona Główna i Nawigacja
-Unikalny Hero Section z efektem Glitch.
+### 1. Strona Główna i Nawigacja 🗺️
+Unikalny Hero Section z efektem Glitch na logo.
 
 Responsywny Navbar (ukrywający się podczas scrollowania) z dynamicznym powitaniem.
 
 Globalne efekty wizualne: Customowy Kursor (Kamera VHS).
 
-### 2. Sklep (Shop) & Produkty
+### 2. Sklep (Shop) & Produkty 🛍️
+
+Wyszukiwanie, sortowanie i filtrowanie filmów.
+
 Pobieranie listy filmów z API.
 
 Dynamicznie generowana siatka produktów ("TV Wall").
 
 Szczegóły produktu (/movie/:id) z opisem, ceną, reżyserem i stanem magazynowym.
 
-### 3. System Opinii (Reviews)
+### 3. System Opinii (Reviews) 📝
 Użytkownicy mogą dodawać opinie (ocena gwiazdkowa + komentarz).
 
 Opinie stylizowane na "ekrany telewizorów".
 
 Admin Mode: Administrator widzi przycisk [X] przy każdej opinii i może ją trwale usunąć.
 
-### 4. Autoryzacja i Bezpieczeństwo
+### 4. Autoryzacja i Bezpieczeństwo ✅
 Rejestracja: Tworzenie nowych kont (hasła są bezpiecznie hashowane).
 
 Logowanie: Autoryzacja za pomocą tokena JWT.
@@ -109,7 +112,7 @@ Ochrona tras: Panel Admina jest niedostępny dla zwykłych użytkowników.
 
 Persystencja sesji: Użytkownik pozostaje zalogowany po odświeżeniu strony.
 
-### 5. Panel Administratora (CMS)
+### 5. Panel Administratora (CMS) 👩‍💻
 Dostępny tylko dla roli admin pod ścieżką /admin:
 
 Widok tabelaryczny wszystkich filmów.
@@ -119,6 +122,11 @@ Dodawanie nowych filmów do sklepu.
 Edycja istniejących filmów (ceny, stany magazynowe).
 
 Usuwanie filmów z oferty.
+
+### 6. Koszyk 🧺
+Zapisuje filmmy dodane do koszyka, nawet po odświerzeniu.
+
+Z niego można zrealizować zamówienie.
 
 ### 📂 Struktura Projektu
 ```angular2html
