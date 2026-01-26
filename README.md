@@ -121,7 +121,7 @@ Edycja istniejących filmów (ceny, stany magazynowe).
 Usuwanie filmów z oferty.
 
 ### 📂 Struktura Projektu
-Plaintext
+```angular2html
 vhs_club/
 ├── public/              # Zasoby statyczne (zdjęcia filmów)
 ├── src/
@@ -133,5 +133,6 @@ vhs_club/
 │   └── main.jsx         # Punkt wejścia
 ├── db.json              # Baza danych (Filmy, Użytkownicy, Opinie)
 └── README.md            # Dokumentacja
+```
 
 Projekt wykonany w ramach zaliczenia przedmiotu Wstęp Do Aplikacji Internetowych. © 2025 VHS_CLUB Team.
