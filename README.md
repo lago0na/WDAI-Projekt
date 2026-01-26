@@ -8,8 +8,8 @@
 
 Tu możesz zobaczyć nasz projekt w akcji:
 
-- **🎬 Wideo prezentacja (YouTube):** [WKLEJ TUTAJ LINK DO FILMU NA YT]
-- **🌍 Strona online (Live Demo):** [WKLEJ TUTAJ LINK DO DZIAŁAJĄCEJ STRONY WWW]
+- **🎬 Wideo prezentacja (YouTube):** [https://youtu.be/1mZ5WS7HbkA]
+- **🌍 Strona online :** [https://lago0na.github.io/WDAI-Projekt/]
 
 ---
 
